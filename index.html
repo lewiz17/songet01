@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Songet</title>
+    <style type="text/css">
+    .dl-wrap {
+        max-height: 30px;
+        display: inline-block;
+        overflow: hidden;
+        max-width: 150px;
+        border-radius: 3px;
+    }
+
+    .dl-wrap iframe {
+        margin-top: -5px;
+        margin-left: -80px;
+    }
+
+    .result-wrap {
+        width: 900px;
+        font-size: 0px;
+        margin: 20px auto;
+    }
+
+    .result-wrap .item-track {
+        width: 280px;
+        display: inline-block;
+        vertical-align: top;
+        min-height: 80px;
+        margin-bottom: 20px;
+        margin-right: 20px;
+        font-size: 0px;
+    }
+
+    .result-wrap .item-track .cap-item,
+    .result-wrap .item-track .option-item {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .result-wrap .item-track .option-item {
+        margin-left: 5px;
+        width: 155px;
+    }
+
+    .result-wrap .item-track .option-item span {
+        font-size: 13px;
+        color: #000;
+        font-family: 'Trebuchet MS', Arial;
+        display: block;
+        margin-top: 8px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    #inputSearch{
+        width: 50%;
+        margin: 40px auto 50px auto;
+        display: block;
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #57b792;
+        border-radius: 5px;
+    }
+
+
+
+    @media (max-width:600px) {
+        #inputSearch{
+            width: 100%;
+        }
+        .result-wrap {
+            width: 100%;
+            box-sizing: border-box;
+            margin: 20px auto;
+        }
+        .result-wrap .item-track {
+            width: 100%;
+            margin: 0px 0px 10px 0px;
+        }
+        .result-wrap .item-track .option-item {
+            width: 58%;
+            margin-left: 2%;
+        }
+        .dl-wrap{
+            max-width: 220px;
+        }
+        .dl-wrap iframe{
+            margin-left: -45px;
+        }
+
+    }
+    </style>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript">
+    var timer;
+    $(document).on('click', '.play', function(e) {
+        e.preventDefault();
+        var self_ = $(this);
+        var id_ = window.atob($(this).data('id'));
+        var title = $(this).parent().find('h4').text();
+        // timer = setInterval(function() { getProg(id_) }, 1000);
+        console.log(id_);
+        streamer(id_);
+    });
+
+
+    $(document).on('click', '.sh_relates', function(e) {
+        e.preventDefault();
+        var current = $(this).parents('.item-track').data('track');
+        console.log(current);
+        window.location.hash = 'relates/' + current;
+    });
+
+
+
+    $(document).keypress('#inputSearch', function(e) {
+        var code = (e.keyCode ? e.keyCode : e.which);
+        var q = $(e.target).val();
+        if (code == 13) {
+            window.location.hash = 'search/' + q;
+        }
+    });
+
+    var search = function(a) {
+        var html = "<div class='result-wrap'>";
+        $.ajax({
+            url: "https://www.googleapis.com/youtube/v3/search",
+            data: {
+                part: 'snippet',
+                key: 'AIzaSyD-RErq2rwmWf-b2M3OJCTcF9VurRhR9Uo',
+                maxResults: '15',
+                order: 'relevance',
+                fields: 'items/id/videoId,items/snippet/title,items/snippet/thumbnails',
+                q: a + ', audio'
+            },
+            dataType: "json",
+            success: function(res) {
+                $.each(res.items, function(index, val) {
+                    if ($(val.id).length) {
+                        html += "<div class='item-track' data-track='" + val.id.videoId + "' >" +
+                            "<div class='cap-item'><img src='" + val.snippet.thumbnails.default.url + "' alt=''></div>" +
+                            "<div class='option-item dl-item'><span title='" + filterWords(val.snippet.title) + "'>" + filterWords(val.snippet.title) + "</span><span><a target='blank_' href='https://www.youtube.com/results?search_query=" + filterWords(val.snippet.title) + "'>Ver en YT</a></span><span class='sh_relates'>Similares</span><span class='dl-wrap' title='" + val.snippet.title + "'><iframe src='//www.recordmp3.co/#/watch?v=" + val.id.videoId + "&layout=button300100&append_file_name=SONGET&t_press_to_start=Empezar&t_waiting_for_worker=Iniciando&t_in_queue=En cola&t_fetching_information=Extrayendo%20Informacion&t_converting=Convirtiendo&t_done=Descargar' style='width: 300px; height: 150px; border: 0px;'></iframe></span></div></div>";
+                    }
+                });
+                html += '</div>';
+                $('#result').html(html);
+            }
+        });
+    }
+
+
+
+    var relates = function(v) {
+        var html = "<div class='result-wrap'>";
+        $.ajax({
+            url: "https://www.googleapis.com/youtube/v3/search",
+            data: {
+                part: 'snippet',
+                key: 'AIzaSyD-RErq2rwmWf-b2M3OJCTcF9VurRhR9Uo',
+                maxResults: '15',
+                fields: 'items/id/videoId,items/snippet/title,items/snippet/thumbnails',
+                relatedToVideoId: v,
+                type: 'video'
+            },
+            dataType: "json",
+            success: function(res) {
+                console.log(res);
+                $.each(res.items, function(index, val) {
+                    console.log(v);
+                    if ($(val.id).length) {
+                        html += "<div class='item-track' data-track='" + val.id.videoId + "' >" +
+                            "<div class='cap-item'><img src='" + val.snippet.thumbnails.default.url + "' alt=''></div>" +
+                            "<div class='option-item dl-item'><span title='" + filterWords(val.snippet.title) + "'>" + filterWords(val.snippet.title) + "</span><span><a target='blank_' href='https://www.youtube.com/results?search_query=" + filterWords(val.snippet.title) + "'>Ver en YT</a></span><span><a href='#'' class='sh_relates'>Ver similares</a></span><span class='dl-wrap' title='" + val.snippet.title + "'><iframe src='//www.recordmp3.co/#/watch?v=" + val.id.videoId + "&layout=button300100&append_file_name=SONGET&t_press_to_start=Empezar&t_waiting_for_worker=Iniciando&t_in_queue=En cola&t_fetching_information=Extrayendo%20Informacion&t_converting=Convirtiendo&t_done=Descargar' style='width: 300px; height: 150px; border: 0px;'></iframe></span></div></div>";
+                    }
+
+                });
+                html += '</div>';
+                $('#result').html(html);
+
+            }
+        });
+
+    }
+
+
+    var toptracks = function(ct){
+        var html = "<div class='result-wrap'>";
+        $.ajax({
+            url: "https://www.googleapis.com/youtube/v3/playlistItems",
+            data: {
+                part: 'snippet',
+                key: 'AIzaSyD-RErq2rwmWf-b2M3OJCTcF9VurRhR9Uo',
+                maxResults: ct,
+                playlistId: 'PLFgquLnL59alcyTM2lkWJU34KtfPXQDaX',
+            },
+            dataType: "json",
+            success: function(res) {
+                console.log(res);
+                $.each(res.items, function(index, val) {
+                    console.log(val);
+                    if ($(val.snippet).length) {
+                        html += "<div class='item-track' data-track='" + val.snippet.resourceId.videoId + "' >" +
+                            "<div class='cap-item'><img src='" + val.snippet.thumbnails.default.url + "' alt=''></div>" +
+                            "<div class='option-item dl-item'><span title='" + filterWords(val.snippet.title) + "'>" + filterWords(val.snippet.title) + "</span><span><a target='blank_' href='https://www.youtube.com/results?search_query=" + filterWords(val.snippet.title) + "'>Ver en YT</a></span><span><a href='#'' class='sh_relates'>Ver similares</a></span><span class='dl-wrap' title='" + val.snippet.title + "'><iframe src='//www.recordmp3.co/#/watch?v=" + val.snippet.resourceId.videoId + "&layout=button300100&append_file_name=SONGET&t_press_to_start=Empezar&t_waiting_for_worker=Iniciando&t_in_queue=En cola&t_fetching_information=Extrayendo%20Informacion&t_converting=Convirtiendo&t_done=Descargar' style='width: 300px; height: 150px; border: 0px;'></iframe></span></div></div>";
+                    }
+
+                });
+                html += '</div>';
+                $('#result').html(html);
+
+            }
+        });
+    }
+
+
+    $(window).on('hashchange load', function() {
+        updateView(decodeURI(window.location.hash));
+    });
+
+    var updateView = function(url) {
+        var temp = url.split('/')[0];
+        var map = {
+            '': function() {
+                toptracks(15);
+            },
+            // Load track.
+            '#track': function() {
+                var id = url.split('#track/')[1].trim();
+                showTrack(id);
+            },
+            // Search track
+            '#search': function() {
+                var q = url.split('#search/')[1].trim();
+                if (q != "") {
+                    search(q);
+                    $('#inputSearch').val(q).focus();
+                }
+
+            },
+            '#relates': function() {
+                var q = url.split('#relates/')[1].trim();
+                if (q != "") {
+                    relates(q);
+                }
+
+            },
+            // Search chart
+            '#chart': function() {
+                var g = url.split('#chart/')[1].trim();
+                searchCharts(g, 20);
+            },
+
+        }
+        if (map[temp]) {
+            map[temp]();
+        } else {
+            errorPage();
+        }
+    }
+
+
+
+
+    // var errorPage = function() {
+    //     alert('Error, intente buscar de nuevo!');
+    //     window.location.hash = 'search/' + $('#inputSearch').val();
+    // }
+
+
+    var filterWords = function(str) {
+        var fws = /mp3|official|video|new|cover|audio|music|oficial|hq|lyric|([([\]/)|])/gi;
+        return str.replace(fws, function(smath) {
+            return smath.replace(/./g, "");
+        });
+    }
+    </script>
+</head>
+
+<body>
+    <div class="xcenter">
+        <input type="search" name="" id="inputSearch" placeholder="Buscar una canción">
+    </div>
+    <div id="result"></div>
+</body>
+
+</html>
