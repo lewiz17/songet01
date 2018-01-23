@@ -18,6 +18,19 @@
         margin-top: -5px;
         margin-left: -80px;
     }
+    #player{
+        width: 320px;
+        width: 240px;
+        position: fixed;
+        bottom: 0px;
+        right: 0px;
+    }
+    .sh_title{
+        font-size: 14px !important;
+        font-weight: bold;
+        color:#57b792 !important;
+        margin-top: 8px;
+    }
 
     .result-wrap {
         width: 900px;
@@ -51,7 +64,7 @@
         color: #000;
         font-family: 'Trebuchet MS', Arial;
         display: block;
-        margin-top: 8px;
+        margin-bottom: 2px;
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
@@ -71,6 +84,14 @@
     @media (max-width:600px) {
         #inputSearch{
             width: 100%;
+        }
+        #player{
+            position: relative;
+            top: auto;
+            left: auto;
+            right: auto;
+            bottom: auto;
+            width:100%;
         }
         .result-wrap {
             width: 100%;
@@ -97,14 +118,10 @@
     <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript">
     var timer;
-    $(document).on('click', '.play', function(e) {
+    $(document).on('click', '.sh_play', function(e) {
         e.preventDefault();
-        var self_ = $(this);
-        var id_ = window.atob($(this).data('id'));
-        var title = $(this).parent().find('h4').text();
-        // timer = setInterval(function() { getProg(id_) }, 1000);
-        console.log(id_);
-        streamer(id_);
+        var current = $(this).parents('.item-track').data('track');
+        streamer(current);
     });
 
 
@@ -143,7 +160,7 @@
                     if ($(val.id).length) {
                         html += "<div class='item-track' data-track='" + val.id.videoId + "' >" +
                             "<div class='cap-item'><img src='" + val.snippet.thumbnails.default.url + "' alt=''></div>" +
-                            "<div class='option-item dl-item'><span title='" + filterWords(val.snippet.title) + "'>" + filterWords(val.snippet.title) + "</span><span><a target='blank_' href='https://www.youtube.com/results?search_query=" + filterWords(val.snippet.title) + "'>Ver en YT</a></span><span class='sh_relates'>Similares</span><span class='dl-wrap' title='" + val.snippet.title + "'><iframe src='//www.recordmp3.co/#/watch?v=" + val.id.videoId + "&layout=button300100&append_file_name=SONGET&t_press_to_start=Empezar&t_waiting_for_worker=Iniciando&t_in_queue=En cola&t_fetching_information=Extrayendo%20Informacion&t_converting=Convirtiendo&t_done=Descargar' style='width: 300px; height: 150px; border: 0px;'></iframe></span></div></div>";
+                            "<div class='option-item dl-item'><span class='sh_title' title='" + filterWords(val.snippet.title) + "'>" + filterWords(val.snippet.title) + "</span><span class='sh_relates'>Ver similares</span><span><a href='#'' class='sh_play'>Escuchar</a></span><span class='dl-wrap' title='" + val.snippet.title + "'><iframe src='//www.recordmp3.co/#/watch?v=" + val.id.videoId + "&layout=button300100&append_file_name=SONGET&t_press_to_start=Empezar&t_waiting_for_worker=Iniciando&t_in_queue=En cola&t_fetching_information=Extrayendo%20Informacion&t_converting=Convirtiendo&t_done=Descargar' style='width: 300px; height: 150px; border: 0px;'></iframe></span></div></div>";
                     }
                 });
                 html += '</div>';
@@ -174,7 +191,7 @@
                     if ($(val.id).length) {
                         html += "<div class='item-track' data-track='" + val.id.videoId + "' >" +
                             "<div class='cap-item'><img src='" + val.snippet.thumbnails.default.url + "' alt=''></div>" +
-                            "<div class='option-item dl-item'><span title='" + filterWords(val.snippet.title) + "'>" + filterWords(val.snippet.title) + "</span><span><a target='blank_' href='https://www.youtube.com/results?search_query=" + filterWords(val.snippet.title) + "'>Ver en YT</a></span><span><a href='#'' class='sh_relates'>Ver similares</a></span><span class='dl-wrap' title='" + val.snippet.title + "'><iframe src='//www.recordmp3.co/#/watch?v=" + val.id.videoId + "&layout=button300100&append_file_name=SONGET&t_press_to_start=Empezar&t_waiting_for_worker=Iniciando&t_in_queue=En cola&t_fetching_information=Extrayendo%20Informacion&t_converting=Convirtiendo&t_done=Descargar' style='width: 300px; height: 150px; border: 0px;'></iframe></span></div></div>";
+                            "<div class='option-item dl-item'><span class='sh_title' title='" + filterWords(val.snippet.title) + "'>" + filterWords(val.snippet.title) + "</span><span><a href='#'' class='sh_relates'>Ver similares</a></span><span><a href='#'' class='sh_play'>Escuchar</a></span><span class='dl-wrap' title='" + val.snippet.title + "'><iframe src='//www.recordmp3.co/#/watch?v=" + val.id.videoId + "&layout=button300100&append_file_name=SONGET&t_press_to_start=Empezar&t_waiting_for_worker=Iniciando&t_in_queue=En cola&t_fetching_information=Extrayendo%20Informacion&t_converting=Convirtiendo&t_done=Descargar' style='width: 300px; height: 150px; border: 0px;'></iframe></span></div></div>";
                     }
 
                 });
@@ -205,7 +222,7 @@
                     if ($(val.snippet).length) {
                         html += "<div class='item-track' data-track='" + val.snippet.resourceId.videoId + "' >" +
                             "<div class='cap-item'><img src='" + val.snippet.thumbnails.default.url + "' alt=''></div>" +
-                            "<div class='option-item dl-item'><span title='" + filterWords(val.snippet.title) + "'>" + filterWords(val.snippet.title) + "</span><span><a target='blank_' href='https://www.youtube.com/results?search_query=" + filterWords(val.snippet.title) + "'>Ver en YT</a></span><span><a href='#'' class='sh_relates'>Ver similares</a></span><span class='dl-wrap' title='" + val.snippet.title + "'><iframe src='//www.recordmp3.co/#/watch?v=" + val.snippet.resourceId.videoId + "&layout=button300100&append_file_name=SONGET&t_press_to_start=Empezar&t_waiting_for_worker=Iniciando&t_in_queue=En cola&t_fetching_information=Extrayendo%20Informacion&t_converting=Convirtiendo&t_done=Descargar' style='width: 300px; height: 150px; border: 0px;'></iframe></span></div></div>";
+                            "<div class='option-item dl-item'><span class='sh_title' title='" + filterWords(val.snippet.title) + "'>" + filterWords(val.snippet.title) + "</span>><span><a href='#'' class='sh_relates'>Ver similares</a></span><span><a href='#'' class='sh_play'>Escuchar</a></span><span class='dl-wrap' title='" + val.snippet.title + "'><iframe src='//www.recordmp3.co/#/watch?v=" + val.snippet.resourceId.videoId + "&layout=button300100&append_file_name=SONGET&t_press_to_start=Empezar&t_waiting_for_worker=Iniciando&t_in_queue=En cola&t_fetching_information=Extrayendo%20Informacion&t_converting=Convirtiendo&t_done=Descargar' style='width: 300px; height: 150px; border: 0px;'></iframe></span></div></div>";
                     }
 
                 });
@@ -214,6 +231,10 @@
 
             }
         });
+    }
+
+    var streamer = function(id){
+        $('#player').html("<iframe id='video' width='100%' height='100' src='//www.youtube.com/embed/"+id+"?rel=0&autoplay=1&controls=0&showinfo=0' frameborder='0' allowfullscreen></iframe>");
     }
 
 
@@ -284,7 +305,9 @@
     <div class="xcenter">
         <input type="search" name="" id="inputSearch" placeholder="Buscar una canción">
     </div>
+    <div id="player"></div>
     <div id="result"></div>
+   
 </body>
 
 </html>
