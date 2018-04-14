@@ -1,0 +1,65 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/widget-button.css">
+</head>
+
+<body>
+    <div id="search-videos" class="card overflow-hidden widget-content button">
+        <div class="download-control-content">
+            <button id="download-audio" class="btn btn-info" style="background-color:#DA4453;color:#fff">
+                <span class="ladda-label" style="color:#fff"> Download MP3
+<div class="buttonTitle">Happy Forever Alone Day (Forever Alone Song)</div>
+</span>
+                <span class="ladda-spinner"></span><span class="ladda-spinner"></span>
+            </button>
+        </div>
+        <input type="hidden" class="video-title-hidden" value="Happy Forever Alone Day (Forever Alone Song)">
+    </div>
+
+    <script>
+    $(document).ready(function() {
+
+        $("#download-audio").click(function() {
+            var butonhtml = $('#download-audio').html();
+            $.ajax({
+                url: 'https://d22.ytcore.org/widgets1/dl.php',
+                method: 'POST',
+                dataType: 'jsonp',
+                beforeSend: function() {
+                    $('#download-audio').addClass('disabled');
+                    $('#download-audio').html('﻿Converting....');
+                },
+                data: {
+                    'idv': 'x-lRA6MvB44',
+                    'type': 'mp3',
+                    'qu': '256',
+                    'title': $('.video-title-hidden').val(),
+                    'server': 'https://d22.ytcore.org/',
+                    'i': ''
+                },
+                success: function(data, textStatus) {
+                    try {
+                        json = data;
+                    } catch (e) {
+                        $('#download-audio').removeClass('disabled');
+                        $('#download-audio').html(butonhtml);
+                        $('#search-results').append('<div class="alert alert-danger mb-2" role="alert"><strong>Error: </strong> Please try again..</div>');
+                        return;
+                    }
+                    if (json.hasOwnProperty('success')) {
+                        $('#download-audio').removeClass('disabled');
+                        $('#download-audio').html(butonhtml);
+                        location.href = 'https://d22.ytcore.org/sse/?jobid=' + json.success;
+                    } else {
+                        $('#search-results').append('<div class="alert alert-danger mb-2" role="alert"><strong>Error: </strong> Please try again..</div>');
+                    }
+                }
+            });
+        });
+    });
+    </script>
+</body>
+
+</html>
