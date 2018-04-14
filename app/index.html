@@ -467,7 +467,7 @@
                 data: {
                     part: "snippet",
                     key: "AIzaSyD-RErq2rwmWf-b2M3OJCTcF9VurRhR9Uo",
-                    maxResults: "15",
+                    maxResults: "20",
                     order: "relevance",
                     fields: "items/id/videoId,items/snippet/title,items/snippet/thumbnails",
                     q: qq + ", audio"
@@ -481,13 +481,13 @@
             })
         },
         relates = function(e) {
-            var a = "<div class='result-wrap'>";
+            var a = "<div class='sl-genre'>";
             $.ajax({
                 url: "https://www.googleapis.com/youtube/v3/search",
                 data: {
                     part: "snippet",
                     key: "AIzaSyD-RErq2rwmWf-b2M3OJCTcF9VurRhR9Uo",
-                    maxResults: "15",
+                    maxResults: "20",
                     fields: "items/id/videoId,items/snippet/title,items/snippet/thumbnails",
                     relatedToVideoId: e,
                     type: "video"
@@ -495,8 +495,8 @@
                 dataType: "json",
                 success: function(e) {
                     $.each(e.items, function(e, t) {
-                        $(t.id).length && (a += "<div class='item-track' data-track='" + t.id.videoId + "' ><div class='cap-item' style='background-image:url(&#39;" + t.snippet.thumbnails.medium.url + "&#39;)'></div><div class='option-item'><span class='sh_title' title='" + filterWords(t.snippet.title) + "'>" + filterWords(t.snippet.title) + "</span><div class='opts'><span><a href='#search/" + filterWords(t.snippet.title) + "' class='icon-search' ></a></span><span><a href='#' class='sh_relates icon-relates'></a></span></div></div></div>")
-                    }), a += "</div>", $("#result").html(a)
+                        $(t.id).length && (a += "<div class='item-track' data-track='" + t.id.videoId + "' ><div class='cap-item' style='background-image:url(&#39;" + t.snippet.thumbnails.medium.url + "&#39;)'></div><div class='option-item'><div class='opts sh_play'><span><a href='#' class='icon-listen' ></a></span></div><span class='sh_title' title='" + filterWords(t.snippet.title) + "'><a href='#' class='sh_dl'>" + filterWords(t.snippet.title) + "</a></span></div></div>")
+                    }), a += "</div>", $("#result").html(''), $("#result").html(a), rendery_sl('#result')
                 }
             })
         },
