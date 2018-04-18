@@ -575,9 +575,9 @@
 
     $(window).on("hashchange load", function() {
         var latin = "PLcfQmtiAG0X-fmM85dPlql5wfYbmFumzQ",
-            pop = "PLDcnymzs18LWrKzHmzrGH1JzLBqrHi3xQ";
-        genre(latin, 0);
-        genre(pop, 1);
+            latest = "PLFgquLnL59akfBSkPboQbriQdViiU5fhB";
+        genre(latest, 0);
+        genre(latin, 1);
         updateView(decodeURI(window.location.hash))
     });
     var updateView = function(e) {
@@ -692,11 +692,11 @@
         <div id="player"></div>
         <div id="result"></div>
         <div class="box-genre">
-            <h2>Latina</h2>
+            <h2>Lo último</h2>
             <div class="sl-genre tracks-box"></div>
         </div>
         <div class="box-genre">
-            <h2>Pop</h2>
+            <h2>Musica Latina</h2>
             <div class="sl-genre tracks-box"></div>
         </div>
     </main>
