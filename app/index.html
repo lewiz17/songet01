@@ -475,7 +475,7 @@
                 dataType: "json",
                 success: function(e) {
                     $.each(e.items, function(e, t) {
-                        $(t.id).length && (a += "<div class='item-track' data-track='" + t.id.videoId + "' ><div class='cap-item' style='background-image:url(&#39;" + t.snippet.thumbnails.medium.url + "&#39;)'></div><div class='option-item'><div class='opts sh_play'><span><a href='#' class='icon-listen' ></a></span></div><span class='sh_title' title='" + filterWords(t.snippet.title) + "'><a href='#' class='sh_dl'>" + filterWords(t.snippet.title) + "</a></span></div></div>")
+                        $(t.id).length && (a += "<div class='item-track' data-track='" + t.id.videoId + "' ><div class='cap-item' style='background-image:url(&#39;" + t.snippet.thumbnails.medium.url + "&#39;)'></div><div class='option-item'><div class='opts sh_play'><span><a href='#' class='icon-listen' ></a></span></div><span class='sh_title' title='" + filterWords(t.snippet.title) + "'><a href='#' class='sh_dl'>" + filterWords(t.snippet.title) + "<span class='icon-dl'>&nbsp;</span></a></span></div></div>")
                     }), a += "</div>", $("#result").html(''), $("#result").html('<h2>Resultados para <a href="#search/' + filterWords(qq) + '" ><b class="grady">' + qq + '</b></a> :</h2>' + a), rendery_sl('#result')
                 }
             })
@@ -495,7 +495,7 @@
                 dataType: "json",
                 success: function(e) {
                     $.each(e.items, function(e, t) {
-                        $(t.id).length && (a += "<div class='item-track' data-track='" + t.id.videoId + "' ><div class='cap-item' style='background-image:url(&#39;" + t.snippet.thumbnails.medium.url + "&#39;)'></div><div class='option-item'><div class='opts sh_play'><span><a href='#' class='icon-listen' ></a></span></div><span class='sh_title' title='" + filterWords(t.snippet.title) + "'><a href='#' class='sh_dl'>" + filterWords(t.snippet.title) + "</a></span></div></div>")
+                        $(t.id).length && (a += "<div class='item-track' data-track='" + t.id.videoId + "' ><div class='cap-item' style='background-image:url(&#39;" + t.snippet.thumbnails.medium.url + "&#39;)'></div><div class='option-item'><div class='opts sh_play'><span><a href='#' class='icon-listen' ></a></span></div><span class='sh_title' title='" + filterWords(t.snippet.title) + "'><a href='#' class='sh_dl'>" + filterWords(t.snippet.title) + "<span class='icon-dl'>&nbsp;</span></a></span></div></div>")
                     }), a += "</div>", $("#result").html(''), $("#result").html(a), rendery_sl('#result')
                 }
             })
@@ -532,7 +532,7 @@
                 success: function(e) {
                     console.log(e);
                     $.each(e.items, function(e, t) {
-                        $(t.snippet).length && (a += "<div class='item-track' data-track='" + t.snippet.resourceId.videoId + "' ><div class='cap-item' style='background-image:url(&#39;" + t.snippet.thumbnails.medium.url + "&#39;)'></div><div class='option-item'><div class='opts sh_play'><span><a href='#' class='icon-listen' ></a></span></div><span class='sh_title' title='" + filterWords(t.snippet.title) + "'><a href='#' class='sh_dl'>" + filterWords(t.snippet.title) + "</a></span></div></div>")
+                        $(t.snippet).length && (a += "<div class='item-track' data-track='" + t.snippet.resourceId.videoId + "' ><div class='cap-item' style='background-image:url(&#39;" + t.snippet.thumbnails.medium.url + "&#39;)'></div><div class='option-item'><div class='opts sh_play'><span><a href='#' class='icon-listen' ></a></span></div><span class='sh_title' title='" + filterWords(t.snippet.title) + "'><a href='#' class='sh_dl'>" + filterWords(t.snippet.title) + "<span class='icon-dl'>&nbsp;</span></a></span></div></div>")
                     }), $(".tracks-box").html(''), $(".tracks-box").eq(pos).html(a), rendery_sl('.box-genre')
                 }
             })
