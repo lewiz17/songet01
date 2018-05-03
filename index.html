@@ -1,13 +1,718 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Songet</title>
-	<script>
-		window.location.href = window.location.href+"/app";
-	</script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Songet - Descubre, comparte, disfruta! </title>
+    <meta name="application-name" content="SONGET" />
+    <meta name="author" content="songet" />
+    <meta name="description" content="Comparte tu musica gratis" />
+    <meta name="keywords" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Songet - Descubre, comparte, disfruta!" />
+    <meta property="og:description" content="Comparte tu musica gratis" />
+    <meta property="twitter:title" content="Songet - Descubre, comparte, disfruta!" />
+    <meta property="twitter:description" content="Comparte tu musica gratis" />
+    <link rel="apple-touch-icon" sizes="120x120" href="icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+    <link rel="manifest" href="icons/manifest.json">
+    <link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+    <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css" rel="stylesheet">
+    <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5a697feb0b4e3b001370511f&product=inline-share-buttons"></script>
+    <style type="text/css">
+    .logo,
+    .sh_title {
+        font-weight: 700
+    }
+
+    @font-face {
+        font-family: Yananeska;
+        src: url(fonts/Yananeska.woff) format('woff');
+        font-weight: 400;
+        font-style: normal
+    }
+
+    body,
+    html {
+        font-family: 'Exo 2', sans-serif!important
+    }
+
+    .app-wrap {
+        width: 900px;
+        margin: 20px auto 10px
+    }
+
+    .dl-wrap {
+        display: inline-block;
+        overflow: hidden;
+        border-radius: 3px
+    }
+
+    .logo {
+        font-size: 45px;
+        line-height: 75px;
+        padding: 0;
+        font-family: Yananeska, Arial;
+        background: linear-gradient(330deg, #e05252 0%, #99e052 25%, #52e0e0 50%, #9952e0 75%, #e05252 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .grady {
+        background: linear-gradient(330deg, #e05252 0%, #99e052 25%, #52e0e0 50%, #9952e0 75%, #e05252 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+
+    .logo a {
+        color: #000;
+        text-decoration: none
+    }
+
+    #player {
+        width: 120px;
+        height: 225px;
+        transition: all 0.5s linear;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        padding: 10px;
+        z-index: 10
+    }
+
+    #player .hold_player iframe {
+        background: #000;
+        height: 200px;
+    }
+
+    #player.remove {
+        height: 0px;
+    }
+
+    .sh_title {
+        font-size: 14px!important;
+        line-height: 18px!important;
+        color: #bdbdbd!important;
+        margin: 0 0 5px!important;
+        padding: 5px 8px;
+        box-sizing: border-box;
+        box-shadow: 0 1px 1px 0 #999!important;
+        border-radius: 0 0 3px 3px!important;
+        overflow: hidden;
+        width: 100%;
+        display: block!important
+    }
+
+    .result-wrap {
+        width: 100%;
+        font-size: 0;
+        margin: 20px auto
+    }
+
+    .result-wrap .item-track {
+        width: 280px;
+        display: inline-block;
+        vertical-align: top;
+        min-height: 80px;
+        margin-bottom: 20px;
+        margin-right: 20px;
+        font-size: 0;
+        position: relative
+    }
+
+    .result-wrap .item-track .cap-item {
+        width: 100%;
+        height: 95px;
+        background-position: top;
+        background-size: cover;
+        background-repeat: no-repeat;
+        box-shadow: 0 0 2px 0 #999;
+        border-radius: 3px 3px 0 0;
+        transition: all .2s ease-in-out
+    }
+
+
+
+    .result-wrap .item-track .cap-item,
+    .result-wrap .item-track .option-item {
+        vertical-align: top
+    }
+
+    .result-wrap .item-track .option-item span {
+        font-size: 14px;
+        line-height: 0;
+        box-shadow: 0 1px 2px 0 #999;
+        vertical-align: top;
+        margin-right: 5px;
+        border-radius: 3px;
+        display: inline-block;
+        text-decoration: none;
+        color: #bdbdbd
+    }
+
+    .result-wrap .item-track .option-item span a {
+        text-decoration: none;
+        color: #57b792;
+        padding: 5px;
+        display: block
+    }
+
+    .result-wrap .item-track .option-item span a:hover {
+        color: #bdbdbd
+    }
+
+    .xcenter {
+        text-align: center
+    }
+
+    #inputSearch {
+        width: 70%;
+        margin: 40px auto 20px;
+        display: block;
+        outline: none;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #000;
+        position: relative;
+    }
+
+    .cap-track {
+        margin: 20px auto 0;
+        width: 300px
+    }
+
+    .cap-track img {
+        max-width: 100%;
+        display: block;
+        margin: 0 auto 20px
+    }
+
+    .cap-track h2 {
+        font-size: 18px;
+        color: #57b792;
+        line-height: 18px;
+        margin: 0 0 20px
+    }
+
+    .opts_dl {
+        width: 100%;
+        margin: 15px 0;
+        line-height: 9px;
+        font-size: 0;
+        display: block
+    }
+
+    .hold_player span,
+    .opts_dl span {
+        font-size: 14px
+    }
+
+    .opts_dl span+span:before {
+        content: "-";
+        color: #57b792;
+        margin: 0 5px
+    }
+
+    .opts_dl span a {
+        text-decoration: none;
+        color: #57b792
+    }
+
+    .genres a,
+    .hold_player span a.sh_close {
+        box-shadow: 0 1px 2px 0 #999;
+        vertical-align: top;
+        border-radius: 3px;
+        display: inline-block;
+        padding: 5px;
+        color: #bdbdbd
+    }
+
+    .hold_player span a.sh_close {
+        text-align: right;
+        float: right;
+        font-size: 14px;
+        line-height: 14px;
+        text-decoration: none;
+        background: #fff
+    }
+
+    .opts_dl span a:hover {
+        text-decoration: underline
+    }
+
+    #result h2 {
+        font-weight: normal;
+    }
+
+    #result h2 a {
+        text-decoration: none;
+    }
+
+    .iframe-button .pure-button-download[data-v-9b263b0c] {
+        background: #000000 !important;
+    }
+
+    @font-face {
+        font-family: icomoon;
+        src: url(fonts/icomoon.eot?pjs3ln);
+        src: url(fonts/icomoon.eot?pjs3ln#iefix) format('embedded-opentype'), url(fonts/icomoon.ttf?pjs3ln) format('truetype'), url(fonts/icomoon.woff?pjs3ln) format('woff'), url(fonts/icomoon.svg?pjs3ln#icomoon) format('svg');
+        font-weight: 400;
+        font-style: normal
+    }
+
+    [class*=" icon-"],
+    [class^=icon-] {
+        font-family: icomoon!important;
+        speak: none;
+        font-style: normal;
+        font-weight: 400;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale
+    }
+
+    .icon-listen:before {
+        content: "\e910"
+    }
+
+    .icon-load:before {
+        content: "\e982"
+    }
+
+    .icon-dl:before {
+        content: "\e9c2"
+    }
+
+    .icon-close:before {
+        content: "\ea0f"
+    }
+
+    .icon-relates:before {
+        content: "\ea5b"
+    }
+
+    .icon-search:before {
+        content: "\e986"
+    }
+
+
+
+    @media (max-width:600px) {
+        #inputSearch,
+        .app-wrap {
+            width: 100%
+        }
+        .result-wrap {
+            width: 100%;
+            min-width: 300px;
+            box-sizing: border-box;
+            margin: 20px auto
+        }
+        .result-wrap .item-track {
+            width: 100%;
+            margin: 0 0 10px
+        }
+        .result-wrap .item-track .cap-item {
+            height: 152px
+        }
+        .result-wrap .item-track .option-item span {
+            font-size: 20px
+        }
+        .dl-wrap {
+            max-width: 100%
+        }
+    }
+
+    @media (min-width:760px) and (max-width:780px) {
+        .result-wrap {
+            width: 100%
+        }
+    }
+
+    .legend {
+        text-align: center;
+        padding: 50px 0 10px;
+        display: block;
+        color: #bdbdbd
+    }
+    /** new box genre **/
+
+    .box-genre {
+        width: 100%;
+        overflow: hidden;
+        margin: 0px 0px 10px 0px;
+    }
+
+    .sl-genre {
+        font-size: 0;
+    }
+
+    .sl-genre .item-track {
+        height: 170px;
+        display: inline-block;
+        vertical-align: top;
+        margin: 0px;
+        background: #fafafa;
+        position: relative;
+    }
+
+    .sl-genre .item-track .cap-item {
+        height: 168px;
+        border: 1px solid #000;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .sl-genre .item-track:hover>.option-item {
+        opacity: 1;
+    }
+
+    .sl-genre .item-track .option-item {
+        position: absolute;
+        z-index: 1;
+        font-size: 20px;
+        top: 0;
+        opacity: 0;
+        transition: all .3s ease-in;
+        width: 100%;
+        height: 100%;
+        background: rgba(204, 204, 204, 0.8);
+    }
+
+    .sl-genre .item-track .option-item .opts {
+        text-align: center;
+        margin: 25% auto;
+        width: 50px;
+        height: 50px;
+        border: 3px solid #000;
+        border-radius: 50%;
+        font-size: 25px !important;
+        font-weight: bold !important;
+    }
+
+    .sl-genre .item-track .option-item .opts span {
+        padding: 0px;
+        display: block;
+    }
+
+    .sl-genre .item-track .option-item .opts a {
+        color: #000;
+        text-decoration: none;
+        display: block;
+        line-height: 50px;
+        outline: none;
+        cursor: pointer;
+    }
+
+    .sl-genre .item-track .option-item .sh_title {
+        min-height: 33px !important;
+        margin: 0px !important;
+        position: absolute;
+        bottom: 0px;
+        height: auto;
+    }
+
+    .sl-genre .item-track .option-item .sh_title a {
+        font-size: 13px !important;
+        line-height: 12px !important;
+        font-weight: normal;
+        color: #000 !important;
+        text-decoration: none;
+        outline: none;
+    }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
+    <script type="text/javascript">
+    $(document).on("click", ".sh_play", function(e) {
+        e.preventDefault();
+
+        var a = $(this).parents(".item-track").data("track");
+        $('#player').removeClass('remove');
+        streamer(a), timer = setInterval(function() {
+            $("#video").length > 0 && ($("#video")[0].contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', "*"), clearInterval(timer))
+        }, 1e3)
+    }), $(document).on("click", ".sh_dl", function(e) {
+        e.preventDefault();
+        var a = $(this).parents(".item-track").data("track"),
+            t = {
+                title: $(this).parents(".item-track").find(".sh_title").text()
+            };
+        localStorage.setItem("dataVid", JSON.stringify(t)), window.location.hash = "download/" + a
+    }), $(document).on("click", ".sh_relates", function(e) {
+        e.preventDefault();
+        var a = $(this).parents(".item-track").data("track");
+        window.location.hash = "relates/" + a
+    }), $(document).on("click", ".sh_share", function(e) {
+        e.preventDefault(), $(".share_box").stop().slideToggle("slow")
+    }), $(document).on("click", ".sh_close", function(e) {
+        e.preventDefault(), $("#player").addClass('remove'), setTimeout(function() { $("#player").html("") }, 1000);
+    }), $(document).keypress("#inputSearch", function(e) {
+        var a = e.keyCode ? e.keyCode : e.which,
+            t = $(e.target).val();
+        13 == a && (window.location.hash = "search/" + t)
+    });
+    var search = function(qq) {
+            var a = "<div class='sl-genre'>";
+            $.ajax({
+                url: "https://www.googleapis.com/youtube/v3/search",
+                data: {
+                    part: "snippet",
+                    key: "AIzaSyD-RErq2rwmWf-b2M3OJCTcF9VurRhR9Uo",
+                    maxResults: "20",
+                    order: "relevance",
+                    fields: "items/id/videoId,items/snippet/title,items/snippet/thumbnails",
+                    q: qq + ", audio"
+                },
+                dataType: "json",
+                success: function(e) {
+                    $.each(e.items, function(e, t) {
+                        $(t.id).length && (a += "<div class='item-track' data-track='" + t.id.videoId + "' ><div class='cap-item' style='background-image:url(&#39;" + t.snippet.thumbnails.medium.url + "&#39;)'></div><div class='option-item'><div class='opts sh_play'><span><a href='#' class='icon-listen' ></a></span></div><span class='sh_title' title='" + filterWords(t.snippet.title) + "'><a href='#' class='sh_dl'>" + filterWords(t.snippet.title) + "&nbsp;<span class='icon-dl'>&nbsp;</span></a></span></div></div>")
+                    }), a += "</div>", $("#result").html(''), $("#result").html('<h2>Resultados para <a href="#search/' + filterWords(qq) + '" ><b class="grady">' + qq + '</b></a> :</h2>' + a), rendery_sl('#result')
+                }
+            })
+        },
+        relates = function(e) {
+            var a = "<div class='sl-genre'>";
+            $.ajax({
+                url: "https://www.googleapis.com/youtube/v3/search",
+                data: {
+                    part: "snippet",
+                    key: "AIzaSyD-RErq2rwmWf-b2M3OJCTcF9VurRhR9Uo",
+                    maxResults: "20",
+                    fields: "items/id/videoId,items/snippet/title,items/snippet/thumbnails",
+                    relatedToVideoId: e,
+                    type: "video"
+                },
+                dataType: "json",
+                success: function(e) {
+                    $.each(e.items, function(e, t) {
+                        $(t.id).length && (a += "<div class='item-track' data-track='" + t.id.videoId + "' ><div class='cap-item' style='background-image:url(&#39;" + t.snippet.thumbnails.medium.url + "&#39;)'></div><div class='option-item'><div class='opts sh_play'><span><a href='#' class='icon-listen' ></a></span></div><span class='sh_title' title='" + filterWords(t.snippet.title) + "'><a href='#' class='sh_dl'>" + filterWords(t.snippet.title) + "&nbsp;<span class='icon-dl'>&nbsp;</span></a></span></div></div>")
+                    }), a += "</div>", $("#result").html(''), $("#result").html(a), rendery_sl('#result')
+                }
+            })
+        },
+        toptracks = function(e) {
+            var a = "<div class='result-wrap'>";
+            $.ajax({
+                url: "https://www.googleapis.com/youtube/v3/playlistItems",
+                data: {
+                    part: "snippet",
+                    key: "AIzaSyD-RErq2rwmWf-b2M3OJCTcF9VurRhR9Uo",
+                    maxResults: e,
+                    playlistId: "PLFgquLnL59alcyTM2lkWJU34KtfPXQDaX"
+                },
+                dataType: "json",
+                success: function(e) {
+                    console.log(e), $.each(e.items, function(e, t) {
+                        $(t.snippet).length && (a += "<div class='item-track' data-track='" + t.snippet.resourceId.videoId + "' ><div class='cap-item' style='background-image:url(&#39;" + t.snippet.thumbnails.medium.url + "&#39;)'></div><div class='option-item'><span class='sh_title' title='" + filterWords(t.snippet.title) + "'>" + filterWords(t.snippet.title) + "</span><div class='opts'><span><a href='#search/" + filterWords(t.snippet.title) + "' class='icon-search' ></a></span><span><a href='#' class='sh_relates icon-relates'></a></span></div></div></div>")
+                    }), a += "</div>", $("#result").html(a)
+                }
+            })
+        },
+        genre = function(e, pos) {
+            var a = "";
+            $.ajax({
+                url: "https://www.googleapis.com/youtube/v3/playlistItems",
+                data: {
+                    part: "snippet",
+                    key: "AIzaSyD-RErq2rwmWf-b2M3OJCTcF9VurRhR9Uo",
+                    maxResults: 20,
+                    playlistId: e
+                },
+                dataType: "json",
+                success: function(e) {
+                    console.log(e);
+                    $.each(e.items, function(e, t) {
+                        $(t.snippet).length && (a += "<div class='item-track' data-track='" + t.snippet.resourceId.videoId + "' ><div class='cap-item' style='background-image:url(&#39;" + t.snippet.thumbnails.medium.url + "&#39;)'></div><div class='option-item'><div class='opts sh_play'><span><a href='#' class='icon-listen' ></a></span></div><span class='sh_title' title='" + filterWords(t.snippet.title) + "'><a href='#' class='sh_dl'>" + filterWords(t.snippet.title) + "&nbsp;<span class='icon-dl'>&nbsp;</span></a></span></div></div>")
+                    }), $(".tracks-box").html(''), $(".tracks-box").eq(pos).html(a), rendery_sl('.box-genre')
+                }
+            })
+        },
+        streamer = function(e) {
+            $("#player").html("<div class='hold_player'><span><a href='#' class='sh_close'>Cerrar</a></span><iframe id='video' width='100%' height='100%' src='//www.youtube.com/embed/" + e + "?autoplay=1&loop=1&rel=0&controls=0&showinfo=0&enablejsapi=1&version=3&playerapiid=ytplayer' frameborder='0' allowfullscreen></iframe></div>")
+        },
+        downloader = function(e) {
+            var a = JSON.parse(localStorage.getItem("dataVid"));
+            $("#result").html("<div class='cap-track'><img src='https://i.ytimg.com/vi/" + e + "/mqdefault.jpg'/><h2>" + a.title + "</h2><span class='dl-wrap'><iframe src='dl.html#" + e + "' style='width: 300px; height: 150px; border: 0px;'></iframe></span><div class='opts_dl'><span><a href='#search/" + a.title + "'>Buscar</a></span><span><a href='#relates/" + e + "'>Ver similares</a></span></div><div class='sharethis-inline-share-buttons'></div></div>"), __sharethis__.initialize()
+        };
+
+    // <iframe id='btn_dl' src='//www.recordmp3.co/#/watch?v=" + e + "&layout=button300100&append_file_name=SONGET&t_press_to_start=Empezar&t_waiting_for_worker=Iniciando&t_in_queue=En cola&t_fetching_information=Extrayendo%20Informacion&t_converting=Convirtiendo&t_done=Descargar' style='width: 300px; height: 150px; border: 0px;'></iframe>
+
+
+    var rendery_sl = function(parent) {
+
+        if ($(parent).find('.sl-genre').hasClass('slick-initialized')) {
+            $('.slick-slider').slick('refresh');
+        } else {
+            if ($(parent).find('.sl-genre').length) {
+                $(parent).find('.sl-genre').slick({
+                    slidesToShow: 5,
+                    autoplay: true,
+                    autoplaySpeed: 2000,
+                    infinite: true,
+                    arrows: false,
+                    responsive: [{
+                        breakpoint: 641,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1
+                        }
+                    }]
+                });
+            }
+
+        }
+
+    }
+
+
+    $(window).on("hashchange load", function() {
+        var latin = "PLcfQmtiAG0X-fmM85dPlql5wfYbmFumzQ",
+            latest = "PLFgquLnL59akfBSkPboQbriQdViiU5fhB";
+        genre(latest, 0);
+        genre(latin, 1);
+        updateView(decodeURI(window.location.hash))
+    });
+    var updateView = function(e) {
+
+            var a = e.split("/")[0],
+                t = {
+                    "#track": function() {
+                        var a = e.split("#track/")[1].trim();
+                        showTrack(a)
+                    },
+                    "#search": function() {
+                        var a = e.split("#search/")[1].trim();
+                        "" != a && (search(a), $("#inputSearch").val(a).focus())
+                    },
+                    "#relates": function() {
+                        var a = e.split("#relates/")[1].trim();
+                        "" != a && relates(a)
+                    },
+                    "#download": function() {
+                        var a = e.split("#download/")[1].trim();
+                        "" != a && downloader(a)
+                    },
+                    "#genre": function() {
+                        var a = "PLcfQmtiAG0X-fmM85dPlql5wfYbmFumzQ",
+                            t = "PLDcnymzs18LWrKzHmzrGH1JzLBqrHi3xQ",
+                            s = "PLH6pfBXQXHEC2uDmDy5oi3tHW6X8kZ2Jo",
+                            i = "PLhd1HyMTk3f5PzRjJzmzH7kkxjfdVoPPj",
+                            r = "PLXupg6NyTvTxw5-_rzIsBgqJ2tysQFYt5",
+                            n = "PLFRSDckdQc1th9sUu8hpV1pIbjjBgRmDw",
+                            l = "PLYAYp5OI4lRLf_oZapf5T5RUZeUcF9eRO",
+                            c = "PLhInz4M-OzRUsuBj8wF6383E7zm2dJfqZ",
+                            o = "PL5ep_pPaQcTe05W_o7KIuS374Q8s7jMDo",
+                            p = "PLUYSqCHHfyUAofgPTvfa3X9oKnOFIap6b",
+                            d = "PLLMA7Sh3JsOQQFAtj1no-_keicrqjEZDm",
+                            u = "PLVXq77mXV53-Np39jM456si2PeTrEm9Mj",
+                            h = "PLfY-m4YMsF-OM1zG80pMguej_Ufm8t0VC",
+                            m = "PLvLX2y1VZ-tFJCfRG7hi_OjIAyCriNUT2",
+                            f = "PLFPg_IUxqnZNnACUGsfn50DySIOVSkiKI",
+                            v = "RDQM6roI33wPJE8",
+                            g = e.split("#genre/")[1].trim();
+                        switch (g) {
+                            case "latin":
+                                genre(a);
+                                break;
+                            case "pop":
+                                genre(t);
+                                break;
+                            case "hiphop":
+                                genre(s);
+                                break;
+                            case "rock":
+                                genre(i);
+                                break;
+                            case "mexicana":
+                                genre(r);
+                                break;
+                            case "ryb":
+                                genre(n);
+                                break;
+                            case "reggae":
+                                genre(l);
+                                break;
+                            case "house":
+                                genre(c);
+                                break;
+                            case "trap":
+                                genre(o);
+                                break;
+                            case "traplatin":
+                                genre(p);
+                                break;
+                            case "cristiana":
+                                genre(d);
+                                break;
+                            case "clasica":
+                                genre(u);
+                                break;
+                            case "heavymetal":
+                                genre(h);
+                                break;
+                            case "country":
+                                genre(m);
+                                break;
+                            case "reggaeton":
+                                genre(v);
+                                break;
+                            case "electro":
+                                genre(f)
+                        }
+                    }
+                };
+            t[a] ? t[a]() : errorPage()
+        },
+        errorPage = function() {
+            window.location.hash = "search/" + $("#inputSearch").val()
+        },
+        filterWords = function(e) {
+            var a = /mp3|official|video|new|cover|audio|music|oficial|hq|lyric|([([\]/)|])/gi;
+            return e.replace(a, function(e) {
+                return e.replace(/./g, "")
+            })
+        };
+    </script>
 </head>
+
 <body>
-	
+    <main class="app-wrap">
+        <div class="xcenter">
+            <h1 class="logo">Songet</h1>
+            <input type="search" name="" id="inputSearch" placeholder="Buscar una canción">
+        </div>
+        <div id="player"></div>
+        <div id="result"></div>
+        <div class="box-genre">
+            <h2>Lo último</h2>
+            <div class="sl-genre tracks-box"></div>
+        </div>
+        <div class="box-genre">
+            <h2>Musica Latina</h2>
+            <div class="sl-genre tracks-box"></div>
+        </div>
+        <div class="ads">
+            <a target="_blank" href="https://www.bestchange.com/?p=437612" title="E-currency exchanger list &ndash; BestChange"><span id="aTeRB5nf6nzy8QbA4trD" style="display: inline-block; width: 468px; height: 60px; background-color: #89b508; margin: 0; padding: 0; border: none; overflow: hidden" onclick="return false"></span></a>
+        </div>
+    </main>
+    <footer><span class="legend">Songet 2018</span></footer>
+    <script type="text/javascript" src="https://www.gstatic.com/swiffy/v7.4/runtime.js"></script>
+    <script type="text/javascript" src="http://www.bestchange.com/images/banners/468x60-12.js"></script>
+    <script type="text/javascript">
+    var stage = new swiffy.Stage(document.getElementById('aTeRB5nf6nzy8QbA4trD'), swiffyobject, {});
+    stage.setFlashVars('clickTAG=https://www.bestchange.com/?p=437612');
+    stage.start();
+    </script>
 </body>
+
 </html>
