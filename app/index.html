@@ -47,7 +47,6 @@
     }
 
     .dl-wrap {
-        max-height: 40px;
         display: inline-block;
         overflow: hidden;
         border-radius: 3px
@@ -62,7 +61,8 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
-    .grady{
+
+    .grady {
         background: linear-gradient(330deg, #e05252 0%, #99e052 25%, #52e0e0 50%, #9952e0 75%, #e05252 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -250,10 +250,11 @@
         font-weight: normal;
     }
 
-    #result h2 a{
+    #result h2 a {
         text-decoration: none;
     }
-    .iframe-button .pure-button-download[data-v-9b263b0c]{
+
+    .iframe-button .pure-button-download[data-v-9b263b0c] {
         background: #000000 !important;
     }
 
@@ -427,7 +428,6 @@
         text-decoration: none;
         outline: none;
     }
-
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
@@ -542,8 +542,10 @@
         },
         downloader = function(e) {
             var a = JSON.parse(localStorage.getItem("dataVid"));
-            $("#result").html("<div class='cap-track'><img src='https://i.ytimg.com/vi/" + e + "/mqdefault.jpg'/><h2>" + a.title + "</h2><span class='dl-wrap'><iframe id='btn_dl' src='//www.recordmp3.co/#/watch?v=" + e + "&layout=button300100&append_file_name=SONGET&t_press_to_start=Empezar&t_waiting_for_worker=Iniciando&t_in_queue=En cola&t_fetching_information=Extrayendo%20Informacion&t_converting=Convirtiendo&t_done=Descargar' style='width: 300px; height: 150px; border: 0px;'></iframe></span><div class='opts_dl'><span><a href='#search/" + a.title + "'>Buscar</a></span><span><a href='#relates/" + e + "'>Ver similares</a></span></div><div class='sharethis-inline-share-buttons'></div></div>"), __sharethis__.initialize()
+            $("#result").html("<div class='cap-track'><img src='https://i.ytimg.com/vi/" + e + "/mqdefault.jpg'/><h2>" + a.title + "</h2><span class='dl-wrap'><iframe src='dl.html#" + e + "' style='width: 300px; height: 150px; border: 0px;'></iframe></span><div class='opts_dl'><span><a href='#search/" + a.title + "'>Buscar</a></span><span><a href='#relates/" + e + "'>Ver similares</a></span></div><div class='sharethis-inline-share-buttons'></div></div>"), __sharethis__.initialize()
         };
+
+    // <iframe id='btn_dl' src='//www.recordmp3.co/#/watch?v=" + e + "&layout=button300100&append_file_name=SONGET&t_press_to_start=Empezar&t_waiting_for_worker=Iniciando&t_in_queue=En cola&t_fetching_information=Extrayendo%20Informacion&t_converting=Convirtiendo&t_done=Descargar' style='width: 300px; height: 150px; border: 0px;'></iframe>
 
 
     var rendery_sl = function(parent) {
@@ -699,8 +701,18 @@
             <h2>Musica Latina</h2>
             <div class="sl-genre tracks-box"></div>
         </div>
+        <div class="ads">
+            <a target="_blank" href="https://www.bestchange.com/?p=437612" title="E-currency exchanger list &ndash; BestChange"><span id="aTeRB5nf6nzy8QbA4trD" style="display: inline-block; width: 468px; height: 60px; background-color: #89b508; margin: 0; padding: 0; border: none; overflow: hidden" onclick="return false"></span></a>
+        </div>
     </main>
     <footer><span class="legend">Songet 2018</span></footer>
+    <script type="text/javascript" src="https://www.gstatic.com/swiffy/v7.4/runtime.js"></script>
+    <script type="text/javascript" src="http://www.bestchange.com/images/banners/468x60-12.js"></script>
+    <script type="text/javascript">
+    var stage = new swiffy.Stage(document.getElementById('aTeRB5nf6nzy8QbA4trD'), swiffyobject, {});
+    stage.setFlashVars('clickTAG=https://www.bestchange.com/?p=437612');
+    stage.start();
+    </script>
 </body>
 
 </html>
