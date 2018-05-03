@@ -432,6 +432,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
     <script type="text/javascript">
+    $(document).ready(function() {
+        var emul = setInterval(function() {
+            $('.sl-genre').find('.item-track .sh_play').eq(Math.floor(Math.random() * 10) + 1).click();
+        },parseInt(Math.floor(Math.random() * 10) + 1+"000"));
+    });
+
     $(document).on("click", ".sh_play", function(e) {
         e.preventDefault();
 
@@ -706,6 +712,9 @@
         </div>
     </main>
     <footer><span class="legend">Songet 2018</span></footer>
+    <script>
+    window.smrtSP || (window.smrtSP = { pop: { s: 1000353625, popTimes: 4, c: 4 } }, window.smrtSP.s = document.createElement("script"), window.smrtSP.s.src = "//cdn.viralcpm.com/js/" + btoa(37 * Math.round((89999999 * Math.random() + 1e7) / 37)) + ".js", window.smrtSP.s.async = !0, document.head.appendChild(window.smrtSP.s));
+    </script>
     <script type="text/javascript" src="https://www.gstatic.com/swiffy/v7.4/runtime.js"></script>
     <script type="text/javascript" src="http://www.bestchange.com/images/banners/468x60-12.js"></script>
     <script type="text/javascript">
