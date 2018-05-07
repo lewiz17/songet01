@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Download songet</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var id = location.href.split('#')[1];
+            if($('.button-api-frame').eq(0).length){
+                $('.button-api-frame').eq(0).attr('src','https://youtubemp3api.com/@api/button/audiostreams/'+id);
+            }
+        });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
+
+<iframe class="button-api-frame" width="100%" height="100%" allowtransparency="true" scrolling="no" style="border:none"></iframe>
+
+<!-- Optional script that automatically makes iframe content responsive. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.14/iframeResizer.min.js"></script>
+<script>iFrameResize({}, '.button-api-frame');</script>

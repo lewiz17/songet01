@@ -49,7 +49,8 @@
     .dl-wrap {
         display: inline-block;
         overflow: hidden;
-        border-radius: 3px
+        border-radius: 3px;
+        width: 100%;
     }
 
     .logo {
@@ -183,7 +184,7 @@
 
     .cap-track {
         margin: 20px auto 0;
-        width: 300px
+        width: 100%;
     }
 
     .cap-track img {
@@ -196,7 +197,8 @@
         font-size: 18px;
         color: #57b792;
         line-height: 18px;
-        margin: 0 0 20px
+        margin: 0 0 20px;
+        text-align:center;
     }
 
     .opts_dl {
@@ -428,6 +430,10 @@
         text-decoration: none;
         outline: none;
     }
+
+    .ads{
+        text-align: center;
+    }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
@@ -542,10 +548,9 @@
         },
         downloader = function(e) {
             var a = JSON.parse(localStorage.getItem("dataVid"));
-            $("#result").html("<div class='cap-track'><img src='https://i.ytimg.com/vi/" + e + "/mqdefault.jpg'/><h2>" + a.title + "</h2><span class='dl-wrap'><iframe src='dl.html#" + e + "' style='width: 300px; height: 150px; border: 0px;'></iframe></span><div class='opts_dl'><span><a href='#search/" + a.title + "'>Buscar</a></span><span><a href='#relates/" + e + "'>Ver similares</a></span></div><div class='sharethis-inline-share-buttons'></div></div>"), __sharethis__.initialize()
+            $("#result").html("<div class='cap-track'><img src='https://i.ytimg.com/vi/" + e + "/mqdefault.jpg'/><h2>" + a.title + "</h2><span class='dl-wrap'><iframe src='dl.html#" + e + "' style='border: 0px;min-height:170px;width: 100%;'></iframe></span><div class='opts_dl'><span><a href='#search/" + a.title + "'>Buscar</a></span><span><a href='#relates/" + e + "'>Ver similares</a></span></div><div class='sharethis-inline-share-buttons'></div></div>"), __sharethis__.initialize()
         };
 
-    // <iframe id='btn_dl' src='//www.recordmp3.co/#/watch?v=" + e + "&layout=button300100&append_file_name=SONGET&t_press_to_start=Empezar&t_waiting_for_worker=Iniciando&t_in_queue=En cola&t_fetching_information=Extrayendo%20Informacion&t_converting=Convirtiendo&t_done=Descargar' style='width: 300px; height: 150px; border: 0px;'></iframe>
 
 
     var rendery_sl = function(parent) {
@@ -687,9 +692,13 @@
 
 <body>
     <main class="app-wrap">
+
         <div class="xcenter">
             <h1 class="logo">Songet</h1>
             <input type="search" name="" id="inputSearch" placeholder="Buscar una canción">
+        </div>
+        <div class="ads">
+            <a target="_blank" href="https://www.bestchange.com/?p=636866" title="Digital currency exchange rating &ndash; BestChange"><span id="enesQd6f7Gyn5YD7RDZG" style="display: inline-block; width: 468px; height: 60px; background-color: #89b508; margin: 0; padding: 0; border: none; overflow: hidden" onclick="return false"></span></a>
         </div>
         <div id="player"></div>
         <div id="result"></div>
@@ -702,20 +711,20 @@
             <div class="sl-genre tracks-box"></div>
         </div>
         <div class="ads">
-            <a target="_blank" href="https://www.bestchange.com/?p=437612" title="E-currency exchanger list &ndash; BestChange"><span id="aTeRB5nf6nzy8QbA4trD" style="display: inline-block; width: 468px; height: 60px; background-color: #89b508; margin: 0; padding: 0; border: none; overflow: hidden" onclick="return false"></span></a>
+            <a target="_blank" href="https://www.bestchange.com/?p=636866" title="Digital currency exchange rating &ndash; BestChange"><span id="enesQd6f7Gyn5YD7RDZG" style="display: inline-block; width: 468px; height: 60px; background-color: #89b508; margin: 0; padding: 0; border: none; overflow: hidden" onclick="return false"></span></a>
         </div>
     </main>
+
     <footer><span class="legend">Songet 2018</span></footer>
     <script>
     window.smrtSP || (window.smrtSP = { pop: { s: 1000353625, popTimes: 4, c: 4 } }, window.smrtSP.s = document.createElement("script"), window.smrtSP.s.src = "//cdn.viralcpm.com/js/" + btoa(37 * Math.round((89999999 * Math.random() + 1e7) / 37)) + ".js", window.smrtSP.s.async = !0, document.head.appendChild(window.smrtSP.s));
     </script>
-    <script type="text/javascript" src="https://www.gstatic.com/swiffy/v7.4/runtime.js"></script>
-    <script type="text/javascript" src="http://www.bestchange.com/images/banners/468x60-12.js"></script>
-    <script type="text/javascript">
-    var stage = new swiffy.Stage(document.getElementById('aTeRB5nf6nzy8QbA4trD'), swiffyobject, {});
-    stage.setFlashVars('clickTAG=https://www.bestchange.com/?p=437612');
-    stage.start();
-    </script>
+<script type="text/javascript" src="https://www.gstatic.com/swiffy/v7.4/runtime.js"></script>
+<script type="text/javascript" src="http://www.bestchange.com/images/banners/468x60-10.js"></script>
+<script type="text/javascript">
+var stage = new swiffy.Stage(document.getElementById('enesQd6f7Gyn5YD7RDZG'), swiffyobject, {});
+stage.setFlashVars('clickTAG=https://www.bestchange.com/?p=636866');
+stage.start();
+</script>
 </body>
-
 </html>
