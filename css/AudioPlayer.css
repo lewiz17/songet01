@@ -441,7 +441,7 @@
 }
 .eq {
   display: flex;
-  width: 20px;
+  width: 12px;
   height: 20px;
   margin: 0 auto;
   justify-content: space-between;
@@ -449,7 +449,7 @@
 }
 
 .eq__bar {
-  width: 4px;
+  width: 2px;
   background: #fff;
 /*  -webkit-filter: drop-shadow(0 0 5px #fff);
           filter: drop-shadow(0 0 5px #fff);*/
