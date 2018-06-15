@@ -87,6 +87,7 @@
        sp__handler = function(type, item, datauri) {
            var nameThis = $(item).parents('.mdl-list__item').eq(0).find('.name-track').text();
            var data = { message: $(item).data('action') + '..."' + nameThis }
+           var newvol = parseInt($('.volume').find('.volume__bar').css('height'))/100;
            var __item_play = [
                { 'icon': iconImage, 'title': nameThis, 'file': datauri }
            ];
@@ -95,6 +96,7 @@
                snackbarContainer.MaterialSnackbar.showSnackbar(data);
                AP.destroy();
                AP.init({
+                   volume: newvol,
                    playList: __item_play
                });
            }
