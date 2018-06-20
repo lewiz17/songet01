@@ -64,8 +64,7 @@
                 autoPlay: true,
                 buffered: true,
                 notification: true,
-                playList: [],
-                fn: function(){}
+                playList: []
             };
 
         function init(options) {

@@ -98,7 +98,7 @@
            ];
 
            if (type == "play") {
-               styleNoty(data, 'success');
+               styleNoty(data, 'info');
                AP.destroy();
                AP.init({
                    volume: newvol,
@@ -109,6 +109,7 @@
                styleNoty(data, 'success');
                AP.update(__item_play);
            }
+           enable__addtrack();
 
        },
        // fn search & render music api
@@ -180,8 +181,12 @@
        },
        styleNoty = function(data, type) {
            switch (type) {
-               case "success":
+               case "info":
                    snackbarContainer.style.backgroundColor = '#2196F3';
+                   snackbarContainer.MaterialSnackbar.showSnackbar(data);
+                   break;
+               case "success":
+                   snackbarContainer.style.backgroundColor = '#4CAF50';
                    snackbarContainer.MaterialSnackbar.showSnackbar(data);
                    break;
                case "error":
@@ -226,4 +231,11 @@
                    break;
            }
            componentHandler.upgradeDom();
+       },
+       enable__addtrack = function() {
+           if ($('.pl-ul').find('.pl-list').length > 0) {
+               $('.btn-js-add').stop().fadeIn();
+           } else {
+               $('.btn-js-add').stop().fadeOut();
+           }
        }
