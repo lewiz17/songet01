@@ -59,7 +59,7 @@
                success: function(res) {
                    var uridl = decodeURI(res.url);
                    $(".logo").prev('span').remove();
-                   snackbarContainer.MaterialSnackbar.showSnackbar(data);
+                   styleNoty(data, 'success');
                    location.href = uridl + '?referer=songet';
                }
            })
@@ -80,20 +80,25 @@
                    var uridl = decodeURI(res.url);
                    sp__handler(type, item, uridl);
                    $(".logo").prev('span').remove();
+               },
+               error: function(xhr, ajaxOptions, thrownError) {
+                   msgError = { message: 'Ha ' + thrownError + ' ocurrido un error, revise su conexión e intente de nuevo!' }
+                   styleNoty(msgError, 'error');
+                   $(".logo").prev('span').remove();
                }
            })
        },
        // Manage fns on audio player
        sp__handler = function(type, item, datauri) {
            var nameThis = $(item).parents('.mdl-list__item').eq(0).find('.name-track').text();
-           var data = { message: $(item).data('action') + '..."' + nameThis }
-           var newvol = parseInt($('.volume').find('.volume__bar').css('height'))/100;
+           var data = { message: $(item).data('action') + nameThis }
+           var newvol = parseInt($('.volume').find('.volume__bar').css('height')) / 100;
            var __item_play = [
                { 'icon': iconImage, 'title': nameThis, 'file': datauri }
            ];
 
            if (type == "play") {
-               snackbarContainer.MaterialSnackbar.showSnackbar(data);
+               styleNoty(data, 'success');
                AP.destroy();
                AP.init({
                    volume: newvol,
@@ -101,7 +106,7 @@
                });
            }
            if (type == "add") {
-               snackbarContainer.MaterialSnackbar.showSnackbar(data);
+               styleNoty(data, 'success');
                AP.update(__item_play);
            }
 
@@ -125,22 +130,13 @@
                },
                dataType: "json",
                success: function(e) {
-                   $.each(e.items, function(e, t) {
-                       if ($(t.id).length) {
-                           a += '<div class="mdl-list__item" data-track="' + t.id.videoId + '">' +
-                               '<a class="mdl-list__item-primary-content btn-js-play" href="#" data-action="Cargando...">' +
-                               '<i class="material-icons mdl-list__item-avatar">album</i>' +
-                               '<span class="name-track">' + filterWords(t.snippet.title) + '</span></a>' +
-                               '<a class="mdl-button mdl-js-button mdl-button--icon btn-js-play" data-action="Cargando..." href="#">' +
-                               '<i class="material-icons">play_arrow</i></a>' +
-                               '<a class="mdl-button mdl-js-button mdl-button--icon btn-js-add" data-action="Se a&ntilde;adi&oacute; a la lista..." href="#">' +
-                               '<i class="material-icons">queue</i></a>' +
-                               '<a class="mdl-button mdl-js-button mdl-button--icon btn-js-dl btn-js-noty" data-action="Descargando track..." href="#" download="true" target="blank_">' +
-                               '<i class="material-icons">file_download</i></a></div>';
-                       }
-                   }), $(".list-result").html(''), $(".list-result").html(a);
-                   componentHandler.upgradeDom();
+                   render__type(a, e, 'search');
                    attach__events('.list-result');
+               },
+               error: function(xhr, ajaxOptions, thrownError) {
+                   msgError = { message: 'Error ' + thrownError + ' al buscar el archivo, revise su conexión e intente de nuevo!' }
+                   styleNoty(msgError, 'error');
+                   $(".logo").prev('span').remove();
                }
            })
        },
@@ -160,21 +156,7 @@
                },
                dataType: "json",
                success: function(e) {
-                   $.each(e.items, function(e, t) {
-                       if ($(t.snippet).length) {
-                           a += '<div class="mdl-list__item" data-track="' + t.snippet.resourceId.videoId + '">' +
-                               '<a class="mdl-list__item-primary-content btn-js-play" href="#" data-action="Cargando...">' +
-                               '<i class="material-icons sp--1-right">album</i>' +
-                               '<span class="name-track" title="' + filterWords(t.snippet.title) + '">' + filterWords(t.snippet.title) + '</span></a>' +
-                               '<a class="mdl-button mdl-js-button mdl-button--icon btn-js-play" data-action="Cargando..." href="#">' +
-                               '<i class="material-icons">play_arrow</i></a>' +
-                               '<a class="mdl-button mdl-js-button mdl-button--icon btn-js-add" data-action="Se a&ntilde;adi&oacute; a la lista..." href="#">' +
-                               '<i class="material-icons">queue</i></a>' +
-                               '<a class="mdl-button mdl-js-button mdl-button--icon btn-js-dl btn-js-noty" data-action="Descargando track..." href="#" download="true" target="blank_">' +
-                               '<i class="material-icons">file_download</i></a></div>';
-                       }
-                   }), $(".list-top").html(''), $(".list-top").html(a);
-                   componentHandler.upgradeDom();
+                   render__type(a, e, 'top');
                    attach__events('.list-top');
                }
            })
@@ -195,4 +177,53 @@
                    sm__handler(searchParams.get('t'));
                    break;
            }
+       },
+       styleNoty = function(data, type) {
+           switch (type) {
+               case "success":
+                   snackbarContainer.style.backgroundColor = '#2196F3';
+                   snackbarContainer.MaterialSnackbar.showSnackbar(data);
+                   break;
+               case "error":
+                   snackbarContainer.style.backgroundColor = '#F44336';
+                   snackbarContainer.MaterialSnackbar.showSnackbar(data);
+                   break;
+           }
+       },
+       render__type = function(wrapper, res, type) {
+           switch (type) {
+               case "search":
+                   $.each(res.items, function(e, t) {
+                       if ($(t.id).length) {
+                           wrapper += '<div class="mdl-list__item" data-track="' + t.id.videoId + '">' +
+                               '<a class="mdl-list__item-primary-content btn-js-play" href="#" data-action="Cargando...">' +
+                               '<i class="material-icons mdl-list__item-avatar">album</i>' +
+                               '<span class="name-track">' + filterWords(t.snippet.title) + '</span></a>' +
+                               '<a class="mdl-button mdl-js-button mdl-button--icon btn-js-play" data-action="Cargando..." href="#">' +
+                               '<i class="material-icons">play_arrow</i></a>' +
+                               '<a class="mdl-button mdl-js-button mdl-button--icon btn-js-add" data-action="Se a&ntilde;adi&oacute; a la lista..." href="#">' +
+                               '<i class="material-icons">queue</i></a>' +
+                               '<a class="mdl-button mdl-js-button mdl-button--icon btn-js-dl btn-js-noty" data-action="Descargando track..." href="#" download="true" target="blank_">' +
+                               '<i class="material-icons">file_download</i></a></div>';
+                       }
+                   }), $(".list-result").html(''), $(".list-result").html(wrapper);
+                   break;
+               case "top":
+                   $.each(res.items, function(e, t) {
+                       if ($(t.snippet).length) {
+                           wrapper += '<div class="mdl-list__item" data-track="' + t.snippet.resourceId.videoId + '">' +
+                               '<a class="mdl-list__item-primary-content btn-js-play" href="#" data-action="Cargando...">' +
+                               '<i class="material-icons sp--1-right">album</i>' +
+                               '<span class="name-track" title="' + filterWords(t.snippet.title) + '">' + filterWords(t.snippet.title) + '</span></a>' +
+                               '<a class="mdl-button mdl-js-button mdl-button--icon btn-js-play" data-action="Cargando..." href="#">' +
+                               '<i class="material-icons">play_arrow</i></a>' +
+                               '<a class="mdl-button mdl-js-button mdl-button--icon btn-js-add" data-action="Se a&ntilde;adi&oacute; a la lista..." href="#">' +
+                               '<i class="material-icons">queue</i></a>' +
+                               '<a class="mdl-button mdl-js-button mdl-button--icon btn-js-dl btn-js-noty" data-action="Descargando track..." href="#" download="true" target="blank_">' +
+                               '<i class="material-icons">file_download</i></a></div>';
+                       }
+                   }), $(".list-top").html(''), $(".list-top").html(wrapper);
+                   break;
+           }
+           componentHandler.upgradeDom();
        }

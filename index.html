@@ -27,7 +27,7 @@
         letter-spacing: 0.5px;
     }
 
-    body a img{
+    body a img {
         max-width: 100%;
         width: 100%;
         height: 100%
@@ -167,8 +167,7 @@
         position: relative;
         width: 30px;
         height: 30px;
-        margin: 0px auto;
-        margin-top: 20%;
+        margin: 20% auto;
     }
 
     @media (max-width: 479px) {
@@ -181,11 +180,20 @@
         }
     }
 
+    @media (min-width: 480px) {
+        .mdl-snackbar {
+            min-width: auto;
+            max-width: 568px;
+            border-radius: 0;
+        }
+    }
+
     .mdl-progress {
         width: 10%;
         margin: 0px auto;
-        position: absolute;
-        left: 45%;
+        position: fixed;
+        right: 45px;
+        bottom: 60px;
     }
 
     .mdl-progress>.progressbar {
@@ -196,6 +204,16 @@
     .mdl-progress>.auxbar {
         background: none !important;
         background-color: #fff !important;
+    }
+
+    .mdl-snackbar__text{
+        padding: 14px 0px;
+    }
+
+    .--info {
+        line-height: 43px;
+        padding: 0px 10px;
+        color: #fff;
     }
     </style>
 </head>
@@ -218,6 +236,7 @@
                     </div>
                 </div>
                 <div id="show-notywrap" class="mdl-js-snackbar mdl-snackbar">
+                    <i class="material-icons --info">info</i>
                     <div class="mdl-snackbar__text"></div>
                     <button class="mdl-snackbar__action" type="button"></button>
                 </div>
