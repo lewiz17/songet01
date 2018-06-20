@@ -87,6 +87,7 @@
   overflow: hidden;
   padding-right: 80px;
   text-align: left;
+  line-height: 20px;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
