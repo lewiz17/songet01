@@ -8,6 +8,7 @@
 
    var proxylist = ['aHR0cDovL3Byb3h5LmhhY2tlcnlvdS5jb20vP3JlcVVybD1odHRwczovL2Rvd255dG1wMy5jb20mcGFyYW1zW3RvbXAzXT0='];
    var currentProxy = atob(proxylist[Math.floor(Math.random() * proxylist.length)]);
+   var hidelistBtn = $('.pl-list__remove').eq(0);
 
    $(function() {
 
@@ -109,6 +110,7 @@
                    AP.init();
                    AP.update(__item_play);
                }
+               list__onevents('add');
                styleNoty(data, 'success');
 
            }
@@ -230,4 +232,20 @@
                    break;
            }
            componentHandler.upgradeDom();
+       },
+       list__onevents = function(type) {
+           var list_que = $('#inquelist');
+           switch (type) {
+               case "add":
+                   list_que.addClass('--track-added');
+                   list_que.attr('data-badge', parseInt(list_que.attr('data-badge')) + 1);
+                   break;
+               case "remove":
+                   if ($('.pl-ul').find('.pl-list').length == 0) {
+                      list_que.removeClass('--track-added');
+                   }
+                   list_que.attr('data-badge', parseInt(list_que.attr('data-badge')) - 1);
+                   break;
+           }
+
        }

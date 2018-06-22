@@ -270,6 +270,7 @@
 
                     playList.splice(isDel, 1);
                     parentEl.closest('.pl-ul').removeChild(parentEl);
+                    list__onevents('remove');
 
                     plLi = pl.querySelectorAll('li');
 

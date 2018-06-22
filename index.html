@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Songet - Search Songs & Download for free">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Songet - Musica de YT sin anuncios!</title>
+    <title>Search Music & Download for free!</title>
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="icon" sizes="192x192" href="img/logo-sg.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Songet - Musica de YT sin anuncios!">
+    <meta name="apple-mobile-web-app-title" content="Songet - Search & Download">
     <link rel="apple-touch-icon-precomposed" href="img/logo-sg.png">
     <link rel="shortcut icon" href="img/logo-sg.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monoton">
@@ -274,6 +275,34 @@
         left: auto;
         z-index: 10;
     }
+
+    .pl-container.h-show {
+        display: block;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: #fff;
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+        background-color: #fff;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #ddd;
+    }
+
+    /****/
+    .mdl-badge[data-badge]:after{
+        background: #ddd;
+        color: #fff;
+    }
+    .mdl-badge.--track-added[data-badge]:after{
+        background: #2196F3;
+    }
+
+
     </style>
 </head>
 
@@ -357,7 +386,7 @@
                         <path d="M17.016 17.016v-4.031h1.969v6h-12v3l-3.984-3.984 3.984-3.984v3h10.031zM6.984 6.984v4.031h-1.969v-6h12v-3l3.984 3.984-3.984 3.984v-3h-10.031z"></path>
                     </svg>
                 </button>
-                <button class="ap__controls ap__controls--playlist">
+                <button class="ap__controls ap__controls--playlist mdl-badge mdl-badge--overlap" id="inquelist" data-badge="0">
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#616161" width="24" height="24" viewBox="0 0 24 24">
                         <path d="M17.016 12.984l4.969 3-4.969 3v-6zM2.016 15v-2.016h12.984v2.016h-12.984zM18.984 5.016v1.969h-16.969v-1.969h16.969zM18.984 9v2.016h-16.969v-2.016h16.969z"></path>
                     </svg>
@@ -370,4 +399,5 @@
     <script src="js/AudioPlayer.js?beta=1.0.1"></script>
     <script src="js/fn-main.js?beta=1.0.1"></script>
 </body>
+
 </html>
