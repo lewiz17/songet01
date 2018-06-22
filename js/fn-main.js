@@ -61,7 +61,7 @@
                    var uridl = decodeURI(res.url);
                    $(".logo").prev('span').remove();
                    styleNoty(data, 'success');
-                   location.href = uridl + '?referer=songet';
+                   window.location = uridl + '?referer=songet';
                }
            })
        },
@@ -79,7 +79,7 @@
                    $(".logo").prev('span').remove();
                },
                error: function(xhr, ajaxOptions, thrownError) {
-                   msgError = { message: 'Ha ' + thrownError + ' ocurrido un error, revise su conexión e intente de nuevo!' }
+                   msgError = { message: 'Ha ocurrido un error ' + thrownError + ', revise su conexión e intente de nuevo!' }
                    styleNoty(msgError, 'error');
                    $(".logo").prev('span').remove();
                }
@@ -95,12 +95,14 @@
            ];
 
            if (type == "play") {
-               styleNoty(data, 'info');
+
                AP.destroy();
                AP.init({
                    volume: newvol,
                    playList: __item_play
                });
+               list__onevents('play');
+               styleNoty(data, 'info');
            }
            if (type == "add") {
 
@@ -236,13 +238,17 @@
        list__onevents = function(type) {
            var list_que = $('#inquelist');
            switch (type) {
+               case "play":
+                   list_que.addClass('--track-added');
+                   list_que.attr('data-badge', 1);
+                   break;
                case "add":
                    list_que.addClass('--track-added');
                    list_que.attr('data-badge', parseInt(list_que.attr('data-badge')) + 1);
                    break;
                case "remove":
                    if ($('.pl-ul').find('.pl-list').length == 0) {
-                      list_que.removeClass('--track-added');
+                       list_que.removeClass('--track-added');
                    }
                    list_que.attr('data-badge', parseInt(list_que.attr('data-badge')) - 1);
                    break;
