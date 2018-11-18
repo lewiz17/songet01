@@ -2,8 +2,8 @@
 
 body * {
     font-family: "Helvetica Neue", sans-serif;
-    font-size: 14px;
-    line-height: 15px;
+    font-size: 12px;
+    line-height: 14px;
     letter-spacing: 0.5px;
 }
 
@@ -25,7 +25,7 @@ h1.logo {
 }
 
 .content {
-    max-width: 1060px;
+    max-width: 800px;
     margin: 0px auto 60px auto;
     width: 100%;
 }
@@ -52,7 +52,7 @@ h6 {
 }
 
 .input {
-    width: 100%;
+    width: 60%;
     padding: 0px 10px;
     box-sizing: border-box;
     line-height: 40px;
@@ -60,7 +60,8 @@ h6 {
     outline: none;
     box-shadow: none;
     border: 1px solid #ddd;
-    margin-bottom: 10px;
+    display: block;
+    margin: 0px auto 40px auto;
 }
 
 .mdl-button input {
@@ -202,11 +203,11 @@ h6 {
 }
 
 .mdl-progress {
-    width: 24.5%;
+    width: 100%;
     margin: 0px auto;
-    position: absolute;
-    left: 12%;
-    top: 12%;
+    position: fixed;
+    left: 0;
+    top: 0;
     z-index: 10;
     background: transparent;
 }
@@ -296,4 +297,28 @@ h6 {
     text-align: left;
     margin: 1% auto;
     display: block;
+}
+/****/
+.mdl-list.list-result{
+    position: relative;
+}   
+.mdl-list{
+    border-top: 3px solid #2196f3;
+    margin-top: 20px;
+    display: block;
+}
+body h6{
+    font-size: 20px;
+    display: inline-block;
+}
+input.filter{
+    display: inline-block;
+    vertical-align: bottom;
+    margin: -10px 0px 0px 7px;
+    padding: 5px;
+    border: 0;
+    border-bottom: 1px solid #ddd;
+    width: 200px;
+    outline: none;
+    float: right;
 }
