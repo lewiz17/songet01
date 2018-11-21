@@ -322,3 +322,16 @@ input.filter{
     outline: none;
     float: right;
 }
+/** Comments **/
+.com-box{
+    width: 100%;
+}
+/** Custom btns **/
+.mdl-button--raised{
+    background: #2196F3;
+    color: #fff;
+}
+.mdl-button--raised:hover{
+    color: #2196F3;
+    background: #eee;
+}
