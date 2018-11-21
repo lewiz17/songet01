@@ -14,10 +14,15 @@
 
        top__tracks();
 
-       shButtom.on('keypress', function (e) {
+       shButtom.on('keyup', function (e) {
            var a = e.keyCode ? e.keyCode : e.which,
                t = $(e.target).val();
-           13 == a && sm__handler(t);
+           13 == a &&
+           setTimeout(function() {
+                if(t != ""){
+                    sm__handler(t);
+                }
+            }, 1000);
        });
 
        if (location.href.indexOf('t=') > -1) {
@@ -225,8 +230,8 @@
                                '<a class="mdl-button mdl-js-button mdl-button--icon btn-js-dl btn-js-noty" data-action="Descargando track: " href="#" download="true" target="self_" title="Descargar (Audio HQ)">' +
                                '<i class="material-icons">file_download</i></a></div></li>';
                        }
-                   }), $(".list-result").html(''),$(".list-result").before('<input type="text" class="filter" onkeyup="s_tracks(this, \'#list-result\')" placeholder="Filtrar canción">'+
-                   '<h6>&#9733; Resultados...</h6>'), $(".list-result").html(wrapper);
+                   }), $(".list-result").html(''), $(".list-result").parent().find('.hold-head').length>0 ? $(".list-result").parent().find('.hold-head').remove() : $(".list-result").before('<div class="hold-head"><input type="text" class="filter" onkeyup="s_tracks(this, \'#list-result\')" placeholder="Filtrar canción">'+
+                   '<h6>&#9733; Resultados...</h6></div>'), $(".list-result").html(wrapper);
                    break;
                case "top":
                    $.each(res.items, function (e, t) {
