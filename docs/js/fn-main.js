@@ -83,13 +83,11 @@
                    componentHandler.upgradeDom();
                },
                success: function (res) {
-                    $(res.vidInfo).each(function(i, v) {
-
-                        console.log(v[3].dloadUrl);  
+                    $(res.vidInfo).each(function(i, v) { 
+                        var uridl = 'https:'+v[3].dloadUrl;
+                        sp__handler(type, item, uridl);
                     });
-                    // var uridl = decodeURI(res.vidInfo);
-                    // sp__handler(type, item, uridl);
-                    // $(".list-result").prev('span').remove();
+                    $(".list-result").prev('span').remove();
                },
                error: function (xhr, ajaxOptions, thrownError) {
                    msgError = {
