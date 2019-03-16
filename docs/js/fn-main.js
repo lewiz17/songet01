@@ -83,7 +83,7 @@
                    componentHandler.upgradeDom();
                },
                success: function (res) {
-                    res.forEach(function(i, v) {
+                    res.vidInfo.forEach(function(i, v) {
                         console.log(v);
                     });
                     // var uridl = decodeURI(res.vidInfo);
