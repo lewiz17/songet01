@@ -84,7 +84,8 @@
                },
                success: function (res) {
                     $(res.vidInfo).each(function(i, v) {
-                        console.log(v);
+
+                        console.log(v[3].dloadUrl);  
                     });
                     // var uridl = decodeURI(res.vidInfo);
                     // sp__handler(type, item, uridl);
