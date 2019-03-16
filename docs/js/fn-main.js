@@ -67,10 +67,13 @@
                    componentHandler.upgradeDom();
                },
                success: function (res) {
-                   var uridl = decodeURI(res.url);
-                   $(".list-result").prev('span').remove();
-                   styleNoty(data, 'success');
-                   window.location = uridl + '?referer=songet';
+                    var uriDL = "";
+                    $(res.vidInfo).each(function(i, v) { 
+                        uriDL = 'https:'+v[0].dloadUrl;
+                    });
+                    $(".list-result").prev('span').remove();
+                    styleNoty(data, 'success');
+                    window.location = uriDL + '?referer=songet';
                }
            })
        },
