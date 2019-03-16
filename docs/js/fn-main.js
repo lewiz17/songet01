@@ -6,7 +6,7 @@
    var api__fields = "items/id/videoId,items/snippet/title,items/snippet/thumbnails";
    var api__listop = "PLcfQmtiAG0X-fmM85dPlql5wfYbmFumzQ";
 
-   var proxylist = ['aHR0cDovL3Byb3h5LmhhY2tlcnlvdS5jb20vP3JlcVVybD1odHRwczovL2Rvd255dG1wMy5jb20mcGFyYW1zW3RvbXAzXT0='];
+   var proxylist = ['c3RvcmFnZS10dW5lcy5yZi5nZC9maWxlLnBocD9wbGF5PQ=='];
    var currentProxy = atob(proxylist[Math.floor(Math.random() * proxylist.length)]);
    var hidelistBtn = $('.pl-list__remove').eq(0);
 
@@ -83,9 +83,12 @@
                    componentHandler.upgradeDom();
                },
                success: function (res) {
-                   var uridl = decodeURI(res.url);
-                   sp__handler(type, item, uridl);
-                   $(".list-result").prev('span').remove();
+                    res.forEach(function(i, v) {
+                        console.log(v);
+                    });
+                    // var uridl = decodeURI(res.vidInfo);
+                    // sp__handler(type, item, uridl);
+                    // $(".list-result").prev('span').remove();
                },
                error: function (xhr, ajaxOptions, thrownError) {
                    msgError = {
