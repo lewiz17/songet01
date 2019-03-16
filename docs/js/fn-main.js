@@ -6,7 +6,7 @@
    var api__fields = "items/id/videoId,items/snippet/title,items/snippet/thumbnails";
    var api__listop = "PLcfQmtiAG0X-fmM85dPlql5wfYbmFumzQ";
 
-   var proxylist = ['c3RvcmFnZS10dW5lcy5yZi5nZC9maWxlLnBocD9wbGF5PQ=='];
+   var proxylist = ['aHR0cHM6Ly9hcGkuZG93bmxvYWQtbGFndS1tcDMuY29tL0BhcGkvanNvbi9tcDMv'];
    var currentProxy = atob(proxylist[Math.floor(Math.random() * proxylist.length)]);
    var hidelistBtn = $('.pl-list__remove').eq(0);
 
