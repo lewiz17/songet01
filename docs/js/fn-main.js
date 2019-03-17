@@ -64,7 +64,7 @@
            var data = {
                message: $(item).data('action') + nameThis
            }
-           window.location = 'http://storage-tunes.rf.gd/file.php?dl='+id+'&title='+nameThis+'&referer=songet';
+           window.location = 'http://storage-tunes.rf.gd/file.php?dl='+id+'&title='+encodeURI(nameThis)+'&referer=songet';
        
        },
        // Manage ajax request
