@@ -336,6 +336,6 @@ input.filter{
     color: #2196F3;
     background: #eee;
 }
-.fb-comments{
-    display: none !important;
+.fb-comments .fb_iframe_widget{
+    display: none;
 }

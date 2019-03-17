@@ -30,7 +30,7 @@
        }
 
        $('#showComments').on('click',function(){
-           $('.fb-comments').fadeIn();
+           $('.fb-comments').find('.fb_iframe_widget').fadeIn();
        });
 
 
