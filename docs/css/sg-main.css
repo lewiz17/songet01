@@ -336,5 +336,5 @@ input.filter{
     background: #eee;
 }
 .fb-comments{
-    display: none;
+    display: none !important;
 }
