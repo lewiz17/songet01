@@ -30,7 +30,7 @@
        }
 
        $('#showComments').on('click',function(){
-           $('.fb-comments').slideToggle();
+           $('.fb-comments').fadeIn();
        });
 
 
