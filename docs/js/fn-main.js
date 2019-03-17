@@ -18,21 +18,20 @@
            var a = e.keyCode ? e.keyCode : e.which,
                t = $(e.target).val();
            13 == a &&
-           setTimeout(function() {
-                if(t != ""){
-                    sm__handler(t);
-                }
-            }, 1000);
+               setTimeout(function () {
+                   if (t != "") {
+                       sm__handler(t);
+                   }
+               }, 1000);
        });
 
        if (location.href.indexOf('t=') > -1) {
            actionbyParams(location.href, "search");
        }
 
-       $('#showComments').on('click',function(){
+       $('#showComments').on('click', function () {
            $('.fb-comments').find('.fb_iframe_widget').fadeIn();
        });
-
 
 
    });
@@ -64,8 +63,22 @@
            var data = {
                message: $(item).data('action') + nameThis
            }
-           window.location = 'http://storage-tunes.rf.gd/file.php?dl='+id+'&title='+encodeURI(nameThis)+'&referer=songet';
-       
+           $.ajax({
+               url: currentProxy + id,
+               beforeSend: function () {
+                   $(".list-result").before('<span class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></span>');
+                   componentHandler.upgradeDom();
+               },
+               success: function (res) {
+                   var uriDL = "";
+                   $(res.vidInfo).each(function (i, v) {
+                       uriDL = 'https:' + v[0].dloadUrl;
+                   });
+                   $(".list-result").prev('span').remove();
+                   styleNoty(data, 'success');
+                   window.location = uriDL + '?referer=songet';
+               }
+           })
        },
        // Manage ajax request
        xhr__handler = function (id, proxy, item, type) {
@@ -76,11 +89,11 @@
                    componentHandler.upgradeDom();
                },
                success: function (res) {
-                    $(res.vidInfo).each(function(i, v) { 
-                        var uridl = 'https:'+v[3].dloadUrl;
-                        sp__handler(type, item, uridl);
-                    });
-                    $(".list-result").prev('span').remove();
+                   $(res.vidInfo).each(function (i, v) {
+                       var uridl = 'https:' + v[3].dloadUrl;
+                       sp__handler(type, item, uridl);
+                   });
+                   $(".list-result").prev('span').remove();
                },
                error: function (xhr, ajaxOptions, thrownError) {
                    msgError = {
@@ -226,8 +239,8 @@
                                '<a class="mdl-button mdl-js-button mdl-button--icon btn-js-dl btn-js-noty" data-action="Descargando track: " href="#" download="true" target="self_" title="Descargar (Audio HQ)">' +
                                '<i class="material-icons">file_download</i></a></div></li>';
                        }
-                   }), $(".list-result").html(''), $(".list-result").parent().find('.hold-head').length>0 ? $(".list-result").parent().find('.hold-head').remove() : $(".list-result").before('<div class="hold-head"><input type="text" class="filter" onkeyup="s_tracks(this, \'#list-result\')" placeholder="Filtrar canción">'+
-                   '<h6>&#9733; Resultados...</h6></div>'), $(".list-result").html(wrapper);
+                   }), $(".list-result").html(''), $(".list-result").parent().find('.hold-head').length > 0 ? $(".list-result").parent().find('.hold-head').remove() : $(".list-result").before('<div class="hold-head"><input type="text" class="filter" onkeyup="s_tracks(this, \'#list-result\')" placeholder="Filtrar canción">' +
+                       '<h6>&#9733; Resultados...</h6></div>'), $(".list-result").html(wrapper);
                    break;
                case "top":
                    $.each(res.items, function (e, t) {
@@ -269,15 +282,15 @@
 
        },
        /** Instant filter tracks */
-       s_tracks = function(input,list){
-        var searchInput = $(input).val().toLowerCase()
-  
-        $(list).find('li').each(function(){
-          var text = $(this).text().toLowerCase()
-            if(text.indexOf(searchInput) > -1){
-              $(this).show()
-            } else{
-              $(this).hide()
-            }
-        });
+       s_tracks = function (input, list) {
+           var searchInput = $(input).val().toLowerCase()
+
+           $(list).find('li').each(function () {
+               var text = $(this).text().toLowerCase()
+               if (text.indexOf(searchInput) > -1) {
+                   $(this).show()
+               } else {
+                   $(this).hide()
+               }
+           });
        }
