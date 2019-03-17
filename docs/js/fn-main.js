@@ -29,6 +29,10 @@
            actionbyParams(location.href, "search");
        }
 
+       $('#showComments').on('click',function(){
+           $('.fb-comments').toggle('slow');
+       });
+
 
 
    });
