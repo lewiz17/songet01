@@ -64,22 +64,8 @@
            var data = {
                message: $(item).data('action') + nameThis
            }
-           $.ajax({
-               url: currentProxy + id,
-               beforeSend: function () {
-                   $(".list-result").before('<span class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></span>');
-                   componentHandler.upgradeDom();
-               },
-               success: function (res) {
-                    var uriDL = "";
-                    $(res.vidInfo).each(function(i, v) { 
-                        uriDL = 'https:'+v[0].dloadUrl;
-                    });
-                    $(".list-result").prev('span').remove();
-                    styleNoty(data, 'success');
-                    window.location = uriDL + '?referer=songet';
-               }
-           })
+           window.location = 'http://storage-tunes.rf.gd/file.php?dl='+id+'&title='+nameThis+'&referer=songet';
+       
        },
        // Manage ajax request
        xhr__handler = function (id, proxy, item, type) {
