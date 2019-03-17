@@ -30,7 +30,7 @@
        }
 
        $('#showComments').on('click',function(){
-           $('.fb-comments').toggle('slow');
+           $('.fb-comments').slideToggle();
        });
 
 
