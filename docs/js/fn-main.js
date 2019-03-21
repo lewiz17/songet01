@@ -5,8 +5,7 @@
    var api__key = "AIzaSyD-RErq2rwmWf-b2M3OJCTcF9VurRhR9Uo";
    var api__fields = "items/id/videoId,items/snippet/title,items/snippet/thumbnails";
    var api__listop = "PLcfQmtiAG0X-fmM85dPlql5wfYbmFumzQ";
-
-   var proxylist = ['aHR0cHM6Ly9hcGkuZG93bmxvYWQtbGFndS1tcDMuY29tL0BhcGkvanNvbi9tcDMv'];
+   var proxylist = ['aHR0cDovL21pY2hhZWxiZWxnaXVtLm1lL3l0Y29udmVydGVyL2NvbnZlcnQucGhwP3lvdXR1YmVsaW5rPWh0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9'];
    var currentProxy = atob(proxylist[Math.floor(Math.random() * proxylist.length)]);
    var hidelistBtn = $('.pl-list__remove').eq(0);
 
@@ -70,10 +69,10 @@
                    componentHandler.upgradeDom();
                },
                success: function (res) {
-                   var uriDL = "";
-                   $(res.vidInfo).each(function (i, v) {
-                       uriDL = 'https:' + v[0].dloadUrl;
-                   });
+                   var uriDL = res.file;
+                //    $(res.vidInfo).each(function (i, v) {
+                //        uriDL = 'https:' + v[0].dloadUrl;
+                //    });
                    $(".list-result").prev('span').remove();
                    styleNoty(data, 'success');
                    window.location = uriDL + '?referer=songet';
@@ -89,10 +88,12 @@
                    componentHandler.upgradeDom();
                },
                success: function (res) {
-                   $(res.vidInfo).each(function (i, v) {
-                       var uridl = 'https:' + v[3].dloadUrl;
-                       sp__handler(type, item, uridl);
-                   });
+                    var uridl = res.file;
+                    sp__handler(type, item, uridl);
+                //    $(res.vidInfo).each(function (i, v) {
+                //        var uridl = 'https:' + v[3].dloadUrl;
+                //        sp__handler(type, item, uridl);
+                //    });
                    $(".list-result").prev('span').remove();
                },
                error: function (xhr, ajaxOptions, thrownError) {
