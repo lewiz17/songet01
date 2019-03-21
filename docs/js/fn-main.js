@@ -5,7 +5,7 @@
    var api__key = "AIzaSyD-RErq2rwmWf-b2M3OJCTcF9VurRhR9Uo";
    var api__fields = "items/id/videoId,items/snippet/title,items/snippet/thumbnails";
    var api__listop = "PLcfQmtiAG0X-fmM85dPlql5wfYbmFumzQ";
-   var proxylist = ['https://cors.io/?+'aHR0cDovL21pY2hhZWxiZWxnaXVtLm1lL3l0Y29udmVydGVyL2NvbnZlcnQucGhwP3lvdXR1YmVsaW5rPWh0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9'];
+   var proxylist = ['https://cors.io/?'+'aHR0cDovL21pY2hhZWxiZWxnaXVtLm1lL3l0Y29udmVydGVyL2NvbnZlcnQucGhwP3lvdXR1YmVsaW5rPWh0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9'];
    var currentProxy = atob(proxylist[Math.floor(Math.random() * proxylist.length)]);
    var hidelistBtn = $('.pl-list__remove').eq(0);
 
