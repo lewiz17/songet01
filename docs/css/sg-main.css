@@ -60,7 +60,7 @@ h6 {
     outline: none;
     box-shadow: none;
     border: 1px solid #ddd;
-    display: block;
+    display: inline-block;
     margin: 0px auto 40px auto;
     text-align: center;
 }
@@ -339,4 +339,27 @@ input.filter{
 }
 .fb-comments .fb_iframe_widget{
     display: none;
+}
+/** New feature **/
+.btn-mic{
+    display: inline-block;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 8px;
+    vertical-align: top;
+    margin-left: -40px;
+    cursor: pointer;
+}
+.mic_active {
+    animation: blinker 1s linear infinite;
+  }
+  
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+.box-search{
+    font-size: 0;
 }
