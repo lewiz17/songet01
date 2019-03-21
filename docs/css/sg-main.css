@@ -52,7 +52,8 @@ h6 {
 }
 
 .input {
-    width: 60%;
+    width: 100%;
+    max-width: 500px;
     padding: 0px 10px;
     box-sizing: border-box;
     line-height: 40px;
@@ -60,7 +61,7 @@ h6 {
     outline: none;
     box-shadow: none;
     border: 1px solid #ddd;
-    display: inline-block;
+    display: block;
     margin: 0px auto 40px auto;
     text-align: center;
 }
