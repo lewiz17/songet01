@@ -20,35 +20,58 @@
     <link rel="stylesheet" href="css/material.min.css" />
     <link rel="stylesheet" href="css/sg-main.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js?beta=1.0.1"></script>
-    <!-- PopAds.net Popunder Code for songet.netlify.com -->
+    <!-- PopAds.net Popunder Code for songet.netlify.com | 2019-03-25,3252829,0,12 -->
     <script type="text/javascript" data-cfasync="false">
         /*<![CDATA[/* */
-        var _pop = _pop || [];
-        _pop.push(['siteId', 3252829]);
-        _pop.push(['minBid', 0]);
-        _pop.push(['popundersPerIP', 12]);
-        _pop.push(['delayBetween', 0]);
-        _pop.push(['default', false]);
-        _pop.push(['defaultPerDay', 0]);
-        _pop.push(['topmostLayer', false]);
+        /* Privet darkv. Each domain is 2h fox dead */
         (function() {
-            var pa = document.createElement('script');
-            pa.type = 'text/javascript';
-            pa.async = true;
-            var s = document.getElementsByTagName('script')[0];
-            pa.src = '//c1.popads.net/pop.js';
-            pa.onerror = function() {
-                var sa = document.createElement('script');
-                sa.type = 'text/javascript';
-                sa.async = true;
-                sa.src = '//c2.popads.net/pop.js';
-                s.parentNode.insertBefore(sa, s);
-            };
-            s.parentNode.insertBefore(pa, s);
+            var v = window;
+            v['\u005f\u0070\x6fp'] = [
+                ['\u0073\u0069\x74\u0065\x49d', 3252829],
+                ['m\u0069\x6e\u0042id', 0],
+                ['p\x6fp\x75\u006e\x64\u0065\u0072\u0073Pe\u0072\x49\u0050', 12],
+                ['\x64e\x6c\x61\x79\u0042e\u0074w\u0065\u0065n', 0],
+                ['\x64\u0065f\u0061\x75\x6c\x74', false],
+                ['\u0064e\x66a\u0075\x6c\x74\u0050\u0065\x72\x44ay', 0],
+                ['\x74o\u0070\u006do\x73\x74\u004c\u0061y\x65\x72', !0]
+            ];
+            var b = [
+                    '\u002f\x2f\u0063\u0031.\u0070\u006f\x70\x61\x64s\u002e\x6e\x65t\u002fpo\u0070\u002e\x6as',
+                    '//\u00632.\u0070opad\x73\u002e\u006ee\x74\x2f\u0070o\u0070\u002e\x6a\x73',
+                    '\x2f\x2fwww\u002e\u0067\u0071\u0065\u006bf\x78\x67\u0064a\u0078\u006f\x61\x75\u002e\u0063\x6fm/\u006c\u0061\x2e\x6a\x73',
+                    '/\u002fw\x77w.\u0070\x6d\u0064\u0067w\x6e\x73g\u0075\x63\u0079\u002e\u0063\u006f\x6d\u002f\x67x\x64\x67.js',
+                    ''
+                ],
+                s = 0,
+                n,
+                i = function() {
+                    if ('' == b[s]) return;
+                    n = v['do\u0063u\u006de\u006e\x74'][
+                        '\u0063\u0072\x65\u0061\x74e\x45\u006c\x65me\u006e\x74'
+                    ]('\x73\x63r\u0069\x70\u0074');
+                    n['\x74yp\x65'] =
+                        'te\x78\u0074\x2f\x6aa\x76as\u0063\x72\x69\u0070t';
+                    n['\x61s\x79\u006ec'] = !0;
+                    var d = v['\x64o\x63u\x6d\x65\x6e\u0074'][
+                        'ge\x74\x45\u006c\u0065\x6d\x65n\x74\x73\u0042\x79\u0054\x61\x67\x4e\x61\x6d\u0065'
+                    ]('\u0073c\x72i\u0070\x74')[0];
+                    n['s\u0072\x63'] = b[s];
+                    if (s < 2) {
+                        n['\x63\u0072\x6f\u0073\x73\u004f\u0072i\u0067i\x6e'] =
+                            '\u0061\u006e\u006fnym\x6f\u0075\x73';
+                    }
+                    n['\x6f\x6ee\u0072\x72o\x72'] = function() {
+                        s++;
+                        i();
+                    };
+                    d['\u0070\u0061rent\u004eode'][
+                        '\u0069n\x73\x65\u0072t\x42\u0065\x66\x6fre'
+                    ](n, d);
+                };
+            i();
         })();
-        /*]]>**\
+        /*]]>/* */
     </script>
-    <!-- PopAds.net Popunder Code End -->
 </head>
 
 <body>
@@ -58,9 +81,11 @@
         <main class="mdl-layout__content">
             <h1 class="logo">Songet</h1>
             <div class="content">
-                <div class="mdl-grid ">
-                    <div class="box-normal mdl-cell-top mdl-cell--12-col box-search">
-                        <input type="text" class="input" placeholder="Buscar artista/canción" id="sh-input" />
+                <div class="mdl-grid">
+                    <div class="box-normal mdl-cell-top mdl-cell--12-col
+                            box-search">
+                        <input type="text" class="input" placeholder="Buscar
+                                artista/canción" id="sh-input" />
                         <!--
                         <button id="start_button" onclick="startButton(event)" class="btn-mic">
                             <i class="material-icons">mic</i>
@@ -84,170 +109,130 @@
                         <ul class="mdl-list list-result" id="list-result"></ul>
                     </div>
                     <div class="box-normal mdl-cell-top mdl-cell--12-col" id="list-top">
-                        <input type="text" class="filter" onkeyup="s_tracks(this,'#list-top')" placeholder="Filtrar canción" />
+                        <input type="text" class="filter" onkeyup="s_tracks(this,'#list-top')" placeholder="Filtrar
+                                canción" />
                         <h6>&#9733; Lo ultimo!</h6>
                         <ul class="list mdl-list list-top" id="list-top"></ul>
-                        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="showComments">Comentanos!</a
-              >
-              <div
-                class="fb-comments"
-                data-href="https://lewiz17.github.io/songet01/"
-                data-width="100%"
-                data-numposts="5"
-              ></div>
-              <span class="disclaimer"
-                >Songet &copy; 2018 - Disclaimer: este sitio no almacena ningún
-                archivo en su servidor. Todos los contenidos son proporcionados
-                por terceros no afiliados</span
-              >
+                        <a class="mdl-button mdl-js-button
+                                mdl-button--raised
+                                mdl-js-ripple-effect" id="showComments">Comentanos!</a>
+                        <div class="fb-comments" data-href="https://lewiz17.github.io/songet01/" data-width="100%" data-numposts="5"></div>
+                        <span class="disclaimer">Songet &copy; 2018 -
+                                Disclaimer: este
+                                sitio no almacena ningún
+                                archivo en su servidor. Todos los contenidos son
+                                proporcionados
+                                por terceros no afiliados</span>
+                    </div>
+                </div>
+                <div id="show-notywrap" class="mdl-js-snackbar
+                        mdl-snackbar">
+                    <i class="material-icons --info">info</i>
+                    <div class="mdl-snackbar__text"></div>
+                    <button class="mdl-snackbar__action" type="button"></button>
+                </div>
             </div>
-          </div>
-          <div id="show-notywrap" class="mdl-js-snackbar mdl-snackbar">
-            <i class="material-icons --info">info</i>
-            <div class="mdl-snackbar__text"></div>
-            <button class="mdl-snackbar__action" type="button"></button>
-          </div>
-        </div>
-      </main>
+        </main>
     </div>
     <div class="ap" id="ap">
-      <div class="ap__inner">
-        <div class="ap__item ap__item--playback">
-          <button class="ap__controls ap__controls--prev">
-            <svg
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              fill="#616161"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            >
-              <path d="M9.516 12l8.484-6v12zM6 6h2.016v12h-2.016v-12z"></path>
-            </svg>
-          </button>
-          <button class="ap__controls ap__controls--toggle">
-            <svg
-              class="icon-play"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              fill="#616161"
-              width="36"
-              height="36"
-              viewBox="0 0 36 36"
-              data-play="M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z"
-              data-pause="M 12,26 16.33,26 16.33,10 12,10 z M 20.66,26 25,26 25,10 20.66,10 z"
-            >
-              <path
-                d="M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z"
-              ></path>
-            </svg>
-          </button>
-          <button class="ap__controls ap__controls--next">
-            <svg
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              fill="#616161"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            >
-              <path d="M15.984 6h2.016v12h-2.016v-12zM6 18v-12l8.484 6z"></path>
-            </svg>
-          </button>
-        </div>
-        <div class="ap__item ap__item--track">
-          <div class="track">
-            <div class="track__title">Su lista está vacia!</div>
-            <div class="track__time">
-              <span class="track__time--current">--</span>
-              <span> / </span>
-              <span class="track__time--duration">--</span>
+        <div class="ap__inner">
+            <div class="ap__item ap__item--playback">
+                <button class="ap__controls ap__controls--prev">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#616161" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M9.516 12l8.484-6v12zM6
+                                6h2.016v12h-2.016v-12z"></path>
+                    </svg>
+                </button>
+                <button class="ap__controls ap__controls--toggle">
+                    <svg class="icon-play" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#616161" width="36" height="36" viewBox="0 0 36 36" data-play="M 12,26
+                            18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18
+                            18.5,14 z" data-pause="M 12,26 16.33,26 16.33,10
+                            12,10 z M
+                            20.66,26 25,26
+                            25,10 20.66,10 z">
+                        <path d="M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22
+                                25,18 25,18
+                                18.5,14
+                                z"></path>
+                    </svg>
+                </button>
+                <button class="ap__controls ap__controls--next">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#616161" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M15.984 6h2.016v12h-2.016v-12zM6
+                                18v-12l8.484 6z"></path>
+                    </svg>
+                </button>
             </div>
-            <div class="progress-container">
-              <div class="progress">
-                <div class="progress__bar"></div>
-                <div class="progress__preload"></div>
-              </div>
+            <div class="ap__item ap__item--track">
+                <div class="track">
+                    <div class="track__title">Su lista está vacia!</div>
+                    <div class="track__time">
+                        <span class="track__time--current">--</span>
+                        <span> / </span>
+                        <span class="track__time--duration">--</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress">
+                            <div class="progress__bar"></div>
+                            <div class="progress__preload"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="ap__item ap__item--settings">
-          <div class="ap__controls volume-container">
-            <button class="volume-btn">
-              <svg
-                class="icon-volume-on"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                fill="#616161"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M14.016 3.234q3.047 0.656 5.016 3.117t1.969 5.648-1.969 5.648-5.016 3.117v-2.063q2.203-0.656 3.586-2.484t1.383-4.219-1.383-4.219-3.586-2.484v-2.063zM16.5 12q0 2.813-2.484 4.031v-8.063q2.484 1.219 2.484 4.031zM3 9h3.984l5.016-5.016v16.031l-5.016-5.016h-3.984v-6z"
-                ></path>
-              </svg>
-              <svg
-                class="icon-volume-off"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                fill="#616161"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 3.984v4.219l-2.109-2.109zM4.266 3l16.734 16.734-1.266 1.266-2.063-2.063q-1.734 1.359-3.656 1.828v-2.063q1.172-0.328 2.25-1.172l-4.266-4.266v6.75l-5.016-5.016h-3.984v-6h4.734l-4.734-4.734zM18.984 12q0-2.391-1.383-4.219t-3.586-2.484v-2.063q3.047 0.656 5.016 3.117t1.969 5.648q0 2.25-1.031 4.172l-1.5-1.547q0.516-1.266 0.516-2.625zM16.5 12q0 0.422-0.047 0.609l-2.438-2.438v-2.203q2.484 1.219 2.484 4.031z"
-                ></path>
-              </svg>
-            </button>
-            <div class="volume">
-              <div class="volume__track">
-                <div class="volume__bar"></div>
-              </div>
+            <div class="ap__item ap__item--settings">
+                <div class="ap__controls volume-container">
+                    <button class="volume-btn">
+                        <svg class="icon-volume-on" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#616161" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M14.016 3.234q3.047 0.656 5.016
+                                    3.117t1.969 5.648-1.969
+                                    5.648-5.016 3.117v-2.063q2.203-0.656
+                                    3.586-2.484t1.383-4.219-1.383-4.219-3.586-2.484v-2.063zM16.5
+                                    12q0 2.813-2.484 4.031v-8.063q2.484 1.219
+                                    2.484 4.031zM3
+                                    9h3.984l5.016-5.016v16.031l-5.016-5.016h-3.984v-6z"></path>
+                        </svg>
+                        <svg class="icon-volume-off" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#616161" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M12 3.984v4.219l-2.109-2.109zM4.266
+                                    3l16.734
+                                    16.734-1.266
+                                    1.266-2.063-2.063q-1.734 1.359-3.656
+                                    1.828v-2.063q1.172-0.328
+                                    2.25-1.172l-4.266-4.266v6.75l-5.016-5.016h-3.984v-6h4.734l-4.734-4.734zM18.984
+                                    12q0-2.391-1.383-4.219t-3.586-2.484v-2.063q3.047
+                                    0.656 5.016
+                                    3.117t1.969 5.648q0 2.25-1.031
+                                    4.172l-1.5-1.547q0.516-1.266
+                                    0.516-2.625zM16.5 12q0 0.422-0.047
+                                    0.609l-2.438-2.438v-2.203q2.484 1.219 2.484
+                                    4.031z"></path>
+                        </svg>
+                    </button>
+                    <div class="volume">
+                        <div class="volume__track">
+                            <div class="volume__bar"></div>
+                        </div>
+                    </div>
+                </div>
+                <button class="ap__controls ap__controls--repeat">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#616161" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M17.016
+                                17.016v-4.031h1.969v6h-12v3l-3.984-3.984
+                                3.984-3.984v3h10.031zM6.984
+                                6.984v4.031h-1.969v-6h12v-3l3.984
+                                3.984-3.984 3.984v-3h-10.031z"></path>
+                    </svg>
+                </button>
+                <button class="ap__controls ap__controls--playlist mdl-badge
+                        mdl-badge--overlap" id="inquelist" data-badge="0">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#616161" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M17.016 12.984l4.969 3-4.969 3v-6zM2.016
+                                15v-2.016h12.984v2.016h-12.984zM18.984
+                                5.016v1.969h-16.969v-1.969h16.969zM18.984
+                                9v2.016h-16.969v-2.016h16.969z"></path>
+                    </svg>
+                </button>
             </div>
-          </div>
-          <button class="ap__controls ap__controls--repeat">
-            <svg
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              fill="#616161"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M17.016 17.016v-4.031h1.969v6h-12v3l-3.984-3.984 3.984-3.984v3h10.031zM6.984 6.984v4.031h-1.969v-6h12v-3l3.984 3.984-3.984 3.984v-3h-10.031z"
-              ></path>
-            </svg>
-          </button>
-          <button
-            class="ap__controls ap__controls--playlist mdl-badge mdl-badge--overlap"
-            id="inquelist"
-            data-badge="0"
-          >
-            <svg
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              fill="#616161"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M17.016 12.984l4.969 3-4.969 3v-6zM2.016 15v-2.016h12.984v2.016h-12.984zM18.984 5.016v1.969h-16.969v-1.969h16.969zM18.984 9v2.016h-16.969v-2.016h16.969z"
-              ></path>
-            </svg>
-          </button>
         </div>
-      </div>
     </div>
 
     <!-- Audio player js begin-->
@@ -256,11 +241,12 @@
     <script src="js/fn-main.js?beta=1.0.1"></script>
     <!-- <script src="js/voice-support.js"></script> -->
     <script type="text/javascript">
-      (sc_adv_out = window.sc_adv_out || []).push({
-        id: '633219',
-        domain: 'n.ads1-adnow.com'
-      });
+        (sc_adv_out = window.sc_adv_out || []).push({
+            id: '633219',
+            domain: 'n.ads1-adnow.com'
+        });
     </script>
     <script type="text/javascript" src="//st-n.ads1-adnow.com/js/a.js"></script>
-  </body>
+</body>
+
 </html>
